@@ -156,10 +156,10 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'postmaster@sandboxcae27f0192634860bac8f7416ebe6f36.mailgun.org'
-EMAIL_HOST_PASSWORD = 'f8ac70c34ff381691992e0419b201dc7'
+EMAIL_HOST_USER = 'postmaster@stormy-coast-67103.herokuapp.com'
+EMAIL_HOST_PASSWORD = '7e089c33053f8366df15dd3de0e4d672'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Noisemakerz <do_not_replay@domain.com>'
+DEFAULT_FROM_EMAIL = 'Noisemakerz <replay@domain.com>'
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
