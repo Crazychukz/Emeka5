@@ -130,7 +130,8 @@ class HomeViews(View):
 
             store = Requested(requested=email_r)
             store.save()
-            return HttpResponseRedirect('create')
+			gotten = 'modal01'
+            return render(request, 'index.html',{'modal01':modal01})
         variables ={
             'form' : form
         }
@@ -428,7 +429,7 @@ class GetStarted(View):
             number_of_friends= api.get_user(twitter_handle).followers_count
             decibel = number_of_friends / 2000
             nf = int(number_of_friends)
-            update_nm = NoisemakerProfile(user=user, twitter_handle=twitter_handle,twitter_ID=twitter_ID,decibel=decibel, number_of_friends=nf, preference=preference)
+            update_nm = NoisemakerProfile(user=user, twitter_handle=twitter_handle,twitter_ID=twitter_ID,decibel=decibel, number_of_friends=nf, preferences=preference)
             update_nm.save()
 
             return redirect('dashboard')
