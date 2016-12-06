@@ -154,10 +154,10 @@ SITE_ID = 1
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'postmaster@stormy-coast-67103.herokuapp.com'
-EMAIL_HOST_PASSWORD = '7e089c33053f8366df15dd3de0e4d672'
+EMAIL_HOST = 'smtp.crazychukz.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'noisemakers@crazychukz.com'
+EMAIL_HOST_PASSWORD = '@CRAZYchukz88'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Noisemakerz <replay@domain.com>'
 
