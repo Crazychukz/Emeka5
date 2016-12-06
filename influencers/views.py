@@ -130,7 +130,7 @@ class HomeViews(View):
 
             store = Requested(requested=email_r)
             store.save()
-            gotten = 'modal01'
+            modal01 = 'modal01'
             return render(request, 'index.html',{'modal01':modal01})
         variables ={
             'form' : form
