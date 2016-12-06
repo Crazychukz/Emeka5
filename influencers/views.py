@@ -100,7 +100,7 @@ class HomeViews(View):
     def get(self, request, *args, **kwargs):
 
         form2 = RequestInviteForm()
-        campaigns = Campaigns.objects.all()
+        campaigns = Campaigns.objects.filter(featured=True)
         return render(request, 'index.html' ,{ 'form2' : form2, 'campaigns' : campaigns })
 
 
@@ -154,7 +154,7 @@ class NoisemakersView(View):
     def get(self, request, *args, **kwargs):
         us = NoisemakerProfile.objects.filter(user = request.user)
         form = ValidationForm()
-        cam= Campaigns.objects.all()
+        cam= Campaigns.objects.filter(approved=True)
 
 
         context = {'us' : us, 'form' : form, 'cam' : cam ,  }
@@ -199,7 +199,7 @@ class NoisemakersView(View):
 
 
 
-            cam= Campaigns.objects.all()
+            cam= Campaigns.objects.filter(approved=True)
 
 
             chc = Tracker.objects.filter(trackers_ID=user, tracking_ID=dummy ).exists()
@@ -266,7 +266,7 @@ class NoisemakersView(View):
               return render(request, 'influencers/campaigns.html', {'cam':cam, 'us':us, 'modal01' : modal, 'earned' : earn, 'form' : form})
 
 
-        cam = Campaigns.objects.all()
+        cam = Campaigns.objects.filter(approved=True)
         noaction = 'Yet to carryout the action'
         errorclass5 = 'alert alert-danger'
         variables = {

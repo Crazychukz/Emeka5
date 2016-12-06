@@ -19,4 +19,5 @@ six==1.10.0
 South==1.0.2
 tweepy==3.5.0
 virtualenv==15.0.3
+psycopg2==2.6.2
 whitenoise==3.2.2

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -148,7 +149,7 @@ DATABASES['default'].update(db_from_env)
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 SITE_ID = 1
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -161,6 +162,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Noisemakerz <do_not_replay@domain.com>'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(PROJECT_ROOT, 'media'),
 )
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

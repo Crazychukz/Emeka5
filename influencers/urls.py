@@ -2,6 +2,7 @@ __author__ = 'CrazychukZ'
 import registration.views
 from django.conf.urls import url, include
 from influencers.views import NoisemakersView
+from Noisemakers import settings
 from influencers.views import PayoutView, ActivitiesView, SummaryView, CreateCampaignView, GetStarted, HomeViews, SignUpView
 
 from noisemaker_invite.views import SendInvite
