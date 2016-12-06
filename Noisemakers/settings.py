@@ -160,10 +160,7 @@ EMAIL_HOST_USER = 'chukwuemekacharles88@gmail.com'
 EMAIL_HOST_PASSWORD = '2016chigotressy'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Noisemakerz <do_not_replay@domain.com>'
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-    os.path.join(PROJECT_ROOT, 'media'),
-)
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
