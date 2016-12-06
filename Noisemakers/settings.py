@@ -154,10 +154,10 @@ SITE_ID = 1
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'chukwuemekacharles88@gmail.com'
-EMAIL_HOST_PASSWORD = '2016chigotressy'
+EMAIL_HOST_USER = 'postmaster@sandboxcae27f0192634860bac8f7416ebe6f36.mailgun.org'
+EMAIL_HOST_PASSWORD = 'f8ac70c34ff381691992e0419b201dc7'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Noisemakerz <do_not_replay@domain.com>'
 
