@@ -1,0 +1,8 @@
+Email:
+{{ email_r }}
+
+Twitter Handle:
+{{ twitter_handle }}
+
+Content:
+New Request

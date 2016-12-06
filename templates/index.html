@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block inline_style %}
+
+
+{% endblock %}
+{% block global_header %}
+
+
+    <section class="landing stack">
+  <nav class="sticky-header ">
+      <div class="container-fluid">
+      <ul class="list-unstyled navbar-right hidden-lg  hidden-md">
+
+            <li >            {% if user.is_authenticated %}
+                <a class="change btn btn-nm" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="change btn btn-nm" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+
+
+
+            {% endif %}</li>
+
+          </ul>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar2" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-shade.svg" %}">
+                  </div>
+          </a>
+
+        </div>
+
+        <div id="navbar2" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+             {% if user.is_authenticated %}
+            <li style="color:#fff ;" ><a href="{% url 'campaigns' %}" >Campaigns</a></li>
+            {% endif %}
+
+
+          </ul>
+          <ul class=" navbar-right hidden-xs hidden-sm">
+
+            <li >            {% if user.is_authenticated %}
+                <a class="change btn btn-nm" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="change btn btn-nm" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+
+
+
+            {% endif %}</li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container-fluid">
+      <ul class=" hidden-lg navbar-right">
+
+            <li >            {% if user.is_authenticated %}
+                <a class="change btn btn-nm" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="change btn btn-nm" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+
+
+
+            {% endif %}</li>
+
+          </ul>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
+                  </div>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            {% if user.is_authenticated %}
+            <li style="color:#fff ;" ><a href="{% url 'campaigns' %}" >Campaigns</a></li>
+            {% endif %}
+
+
+          </ul>
+
+          <ul class="hidden-sm hidden-xs  navbar-right">
+
+
+
+            <li >            {% if user.is_authenticated %}
+                <a class="change btn btn-nm" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="change btn btn-nm" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+
+
+
+            {% endif %}</li>
+
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
+        <div class="first-stack">
+
+        <div class="landing-image-wrapper ">
+
+             <img src="{% static "influencers/images/landing-bg-2.jpg" %}">
+
+
+
+
+    </div>
+            <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 ">
+                <div class="nm-value-wrapper">
+               <h1 class="nm-value"> Become A
+                     Noisemaker</h1>
+
+<p class=""><mark>Earn money using your social media account.</mark><br> <mark>Its really that simple</mark></p>
+</div>
+            </div>
+             <div class="col-xs-12 col-md-6">
+               <div class="nm-invite-wrapper">
+                   <div>
+                       <h3 class="nm-nomargin">GET
+                      INVITE</h3>
+                   </div>
+                   <form action="." method="post">
+  {% csrf_token %}
+
+    <div class="form-group">
+        <div class="help-block with-errors">{{ form.email.errors.as_text }}</div>
+    <p><label for="id_email"></label>
+        <input class="form-control"  id="id_email" maxlength="150" name="email" placeholder="Email address" type="email" required />
+
+    </p>
+
+        </div>
+
+    <div class="form-group input-group">
+        <span class="input-group-addon"><i class="fa fa-at fa-fw"></i></span>
+
+        <input class="form-control" id="id_twitter_handle" name="twitter_handle" type="text" placeholder="Twitter handle" required />
+
+
+        </div>
+
+
+
+
+  <p><input type="submit" class="btn btn-success" value="Request Invite" style="width: 100%;" /></p>
+</form>
+
+               </div>
+            </div>
+        </div></div>
+        </div>
+     <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content" style="max-width: 300px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title text-center">Log in to Noisemaker</h3>
+        </div>
+        <div class="modal-body">
+<form method="post" action="{% url 'auth_login' %}">
+{% csrf_token %}
+ <div class="form-group">
+      <P><label for="id_username"></label>
+<input id="id_username" type="text" name="username" maxlength="254" class="form-control" placeholder="username" required /></P>
+        </div>
+    <div class="form-group">
+      <P><label for="id_password"></label>
+<input id="id_password" type="password" name="password" maxlength="100" class="form-control" placeholder="password" required /></P>
+        </div>
+
+  <input type="submit" class="btn btn-success"  style="width: 100%" value="{% trans 'Log in' %}" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+            <p> <a href="{% url 'auth_password_reset' %}">{% trans "Forget Password" %}?</a></p>
+          <p>{% trans "Not a Noisemaker" %}? <a href="{% url 'registration_register' %}">{% trans "Sign up" %}</a></p>
+                </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+</div></div>
+    </section>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <section class="stack sign-up clearfix" id="sign-up">
+    <header class="stack-header">
+
+        <div class="stack-2">
+        <h2 class="header-title "><a href="#sign-up" class="scroller">How it works</a></h2>
+            </div>
+</header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="features-wrapper">
+                   <div class="nm-hm-icon sign-up-icon">
+                       </div>
+                    <div class="features text-center">
+                    <p>
+                        <h2>Sign Up</h2>
+                    </p>
+
+                        <p >
+                           The easy one. Sign up and get ranked by the system, this determines your decibel and
+                            how moch you could earn from using your social media accounts.
+                        </p>
+                    </div>
+                </div>
+                </div>
+
+            <div class="col-md-4">
+                <div class="features-wrapper">
+
+                    <div class="nm-hm-icon act-icon">
+                       </div>
+                    <div class="features text-center">
+                        <p>
+                            <h1>Act</h1>
+                        </p>
+
+
+
+                        <p class="text-justify">
+                           Nothing too difficult, just your normal social media interactions - share, retweets, like and follow.
+                            make sure to confirm your actions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="features-wrapper ">
+
+                   <div class="nm-hm-icon pay-icon">
+                       </div>
+                    <div class="features text-center">
+                        <p>
+                            <h2>Get Paid</h2>
+                        </p>
+
+
+
+                        <p >
+                           You automatically get paid for the actions you perform. That easy!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section class="stack nm-featured clearfix" style="padding-top: 100px;" >
+    <header class="stack-header">
+
+        <div class="stack-3">
+        <h2 class="header-title page-header "><a href="" class="scroller">Featured Campaigns</a></h2>
+            </div>
+</header>
+
+
+             <div class="row">
+                {% for object in campaigns %}
+                    <div class="col-md-6 cam">
+                    <div class="nm-campaign-wrapper">
+
+                        <div class="nm-hd-cam" style=" padding: 10px;">
+                        <p class="nm-cam-dt">Action<span class="badge">{{ object.action }}</span> </p>
+                        <p class="nm-cam-dt">Base Pay<span class="badge">&#8358; {{ object.base_pay }}</span></p>
+                        <p class="nm-cam-dt">Tracking Number<span class="badge">{{ object.dummy_tracker }}</span></p>
+
+                        </div>
+                        <div class="nm-sep">
+                            <hr>
+
+                        </div>
+                         {% if object.action == 'Retweet' %}
+                        <div class="nm-main" style="padding: 10px">
+                <blockquote class="twitter-tweet" style="max-height: 400px;">
+<a href="{{ object.url }}"></a></blockquote>
+                    </div>
+                            {% elif object.action == 'Follow' %}
+                         <div class="nm-main" style="padding: 10px">
+
+                         <a class="twitter-follow-button"
+  href="https://twitter.com/{{ object.follow_handle }}"
+  data-size="large">
+Follow @{{ object.follow_handle }}</a>
+                    </div>
+                              {% elif object.action == 'Tweet' %}
+                         <div class="nm-main" style="padding: 10px">
+
+                             <div class="well">
+
+                            <p><span class="mark"> Hashtag</span><br>{{ object.hash_tag }}</p>
+
+                             <p><span class="mark"> Desired Tweet</span><br>
+
+
+                            {{ object.tweet }}</p>
+                        </div>
+
+                    </div>
+
+                        {% endif %}
+                    </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+
+
+    </section>
+
+{% endblock %}

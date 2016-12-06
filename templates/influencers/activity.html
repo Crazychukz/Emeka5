@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+{% block inline_style %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+            .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: transparent;
+}
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+    .navbar-toggle{
+    margin-top: 12px;
+}
+
+.navbar-header{
+    text-align: center;
+
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    text-shadow: none;
+}
+ul.navbar-right {
+    list-style: none;
+    margin-top: 0;
+    color: #fff;
+    padding-top: 12px;
+}
+.dropdown-toggle img{
+    width: auto;
+    height: 30px;
+}
+    .navbar-default{
+    background-color: #04bfad;
+    border-color: #e7e7e7;
+    border-width: 0 0 1px;
+}
+.navbar-brand .nm-logo > img{
+    width: auto;
+    height: 30px;
+}
+    .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 8px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+    body {
+  background: #eee;
+
+}
+    .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+}
+.container{
+    max-width: 970px;
+}
+    </style>
+{% endblock %}
+
+
+
+
+{% block content %}
+     <nav class="navbar navbar-default navbar-fixed-top hidden-lg hidden-md hidden-sm">
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'index' %}">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
+                  </div>
+          </a>
+            <ul class=" navbar-right  navbar-nav">
+          <li style="margin-right: 10px;">
+                  {% if user.is_authenticated %}
+                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+                 {% endif %}
+
+              </li>
+      </ul>
+        </div>
+
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav  ">
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+             <li  ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+            <li class="active" ><a href="{% url 'activity' %}"><i class="fa fa-send-o fa-fw" aria-hidden="true"></i>&nbsp;Acts</a></li>
+            <li ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+      <div class="ns-lg">
+               <a  href="{% url 'index' %}"> <img class="img-responsive" src="{% static 'influencers/images/noisemaker-light.svg' %}">
+</a>
+            </div>
+            <ul class="nav nav-sidebar">
+             <li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'auth_logout' %}"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;{% trans "Log out" %}</a>
+                {% endif %}
+                </li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+
+            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+            <li class="active"><a href="{% url 'activity'%}"><i class="fa fa-send-o fa-fw" aria-hidden="true"></i>&nbsp;Acts</a></li>
+            <li><a href="{% url 'create'%}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+          </ul>
+        </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+
+
+<div class="nm-dash">
+ <h2 class="page-header">History</h2>
+
+
+
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Tracking ID</th>
+                  <th>Action</th>
+                  <th>Base Pay</th>
+
+                </tr>
+              </thead>
+              <tbody>
+              {% for objects in real %}
+                <tr>
+
+                  <td>{{ objects.campaign.dummy_tracker }}</td>
+                  <td>{{ objects.campaign.action }}</td>
+                  <td>{{ objects.campaign.base_pay }}</td>
+
+                </tr>
+                {% endfor %}
+
+
+
+
+
+              </tbody>
+            </table>
+          </div></div></div>
+                 </div>
+
+
+
+{% endblock %}
+{% block gloal_footer %}
+{% endblock %}

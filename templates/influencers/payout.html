@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+{% block inline_style %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+        .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: transparent;
+}
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+    .navbar-toggle{
+    margin-top: 12px;
+}
+
+.navbar-header{
+    text-align: center;
+
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    text-shadow: none;
+}
+ul.navbar-right {
+    list-style: none;
+    margin-top: 0;
+    color: #fff;
+    padding-top: 12px;
+}
+.dropdown-toggle img{
+    width: auto;
+    height: 30px;
+}
+    .navbar-default{
+    background-color: #04bfad;
+    border-color: #e7e7e7;
+    border-width: 0 0 1px;
+}
+.navbar-brand .nm-logo > img{
+    width: auto;
+    height: 30px;
+}
+    .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 8px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+    body {
+  background: #eee;
+
+}
+    .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+}
+.container{
+    max-width: 970px;
+}
+    .form-wrapper{
+        box-shadow: none;
+    margin-top: 10px;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-default navbar-fixed-top hidden-lg hidden-md hidden-sm">
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'index' %}">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
+                  </div>
+          </a>
+            <ul class=" navbar-right  navbar-nav">
+          <li style="margin-right: 10px;">
+                  {% if user.is_authenticated %}
+                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+                 {% endif %}
+
+              </li>
+      </ul>
+        </div>
+
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav  ">
+             <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+             <li class="active" ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+
+            <li ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
+             <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp; Invite</a></li>
+         </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="ns-lg">
+               <a  href="{% url 'index' %}"> <img class="img-responsive" src="{% static 'influencers/images/noisemaker-light.svg' %}">
+</a>
+            </div>
+            <ul class="nav nav-sidebar">
+
+            <li><a href="{% url 'campaigns'%}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+
+            <li class="active"><a href="" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+
+            <li><a href="{% url 'create'%}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
+<li><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp;Invite</a> </li>
+                 <li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'auth_logout' %}"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;{% trans "Log out" %}</a>
+                {% endif %}
+                </li>
+          </ul>
+        </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+                 <div class="nm-dash">
+                     <h4 class="page-header">
+                    Request Payout
+                </h4>
+                     <div class="form-wrapper">
+
+
+
+    <form method="post" action=".">
+        <div>
+            <div class="{{ error_class1 }}" >{{ error }}</div>
+            <div class="{{ error_class }}" >{{ error2 }}</div>
+            <div class="{{ error_class3 }}" >{{ error3 }}</div>
+        </div>
+{% csrf_token %}
+        <p>
+  <div class="input-group">
+<div class="input-group-addon">&#8358;</div>
+        <label for="id_amount_requested"></label>
+        <input id="id_amount_requested" type="text" name="amount_requested"
+               maxlength="254" class="form-control" placeholder="00" required />
+        <div class="input-group-addon">.00</div>
+    </div>
+        <div class="form-group">
+<label for="id_bank_account"></label>
+<input id="id_bank_account" placeholder="account number" type="text" name="bank_account" maxlength="10"
+       class="form-control" value="{{ usernum }}"  required />
+</div>
+        <div class="form-group">
+      <P><label for="id_bank"></label>
+<select id="id_bank"  name="bank"  class="form-control"  required >
+
+    <option value="Access Bank Plc">Access Bank Plc</option>
+<option value="Diamond Bank Limited">Diamond Bank Limited</option>
+<option value="Ecobank Nigeria Plc">Ecobank Nigeria Plc</option>
+<option value="Fidelity Bank Plc">Fidelity Bank Plc</option>
+<option value="First Bank of Nigeria Plc">First Bank of Nigeria Plc</option>
+<option value="First City Monument Bank Ltd">First City Monument Bank Ltd</option>
+<option value="Guaranty Trust Bank Plc">Guaranty Trust Bank Plc</option>
+<option value="StanbicIBTC Bank">StanbicIBTC Bank</option>
+<option value="Skye Bank">Skye Bank</option>
+<option value="Standard Chartered Bank Nigeria Ltd">Standard Chartered Bank Nigeria Ltd</option>
+<option value="Sterling Bank Plc">Sterling Bank Plc</option>
+<option value="Union Bank of Nigeria Plc">Union Bank of Nigeria Plc</option>
+<option value="United Bank for Africa Plc">United Bank for Africa Plc</option>
+<option value="Unity Bank">Unity Bank</option>
+<option value="Wema Bank Plc" >Wema Bank Plc</option>
+<option value="Zenith International Bank Ltd">Zenith International Bank Ltd</option>
+      </select>
+      </P>
+        </div>
+
+  <input type="submit" class="btn btn-primary" value="Request"/></form></div>
+
+
+                 </div>
+             <div class="nm-dash">
+  <h4 class="page-header">
+                    Payment History
+                </h4>
+
+                  <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                    <th>Paid</th>
+
+                </tr>
+              </thead>
+              <tbody>
+              {% for objects in payment_history %}
+                <tr>
+
+                  <td>&#8358;{{ objects.amount_requested }}</td>
+                  <td>{{ objects.date_requested }}</td>
+                  <td>{% if objects.approved == False %}
+                  <i class="fa fa-spinner fa-pulse  fa-fw"></i>
+                      {% elif objects.approved == True %}
+                      <i style="color: green;" class="fa fa-check"></i>
+                      {% endif %}
+                   </td>
+                <td>
+                    {% if objects.paid == False %}
+                  <i class="fa fa-spinner fa-pulse  fa-fw"></i>
+                      {% elif objects.paid == True %}
+                      <i class="fa fa-check"></i>
+                      {% endif %}
+                </td>
+
+                </tr>
+                {% endfor %}
+
+
+
+
+
+              </tbody>
+            </table>
+          </div>
+
+
+             </div>
+             </div>
+    </div>
+
+{% endblock %}
+{% block gloal_footer %}
+{% endblock %}

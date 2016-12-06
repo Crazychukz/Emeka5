@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="login-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="login-form-wrapper">
+<form method="post" action=".">
+{% csrf_token %}
+ <div class="form-group">
+      <P><label for="id_username"></label>
+<input id="id_username" type="text" name="username" maxlength="254" class="form-control" placeholder="username" required /></P>
+        </div>
+    <div class="form-group">
+      <P><label for="id_password"></label>
+<input id="id_password" type="password" name="password" maxlength="100" class="form-control" placeholder="password" required /></P>
+        </div>
+
+  <input type="submit" value="{% trans 'Log in' %}" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+{% endblock %}

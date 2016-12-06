@@ -1,0 +1,404 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% load staticfiles %}
+{% block inline_style %}
+
+
+<style type="text/css">
+
+body {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+    background-color: #f8f8f8;
+}
+.navbar-toggle{
+    margin-top: 12px;
+}
+
+.navbar-header{
+    text-align: center;
+
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000;
+}
+.nm-hd-cam{
+    color: #000000;
+}
+.nm-cam-dt {
+    color: #000000;
+    font-weight: normal;
+}
+
+
+.main{
+    padding-top: 80px;
+}
+
+ul.navbar-right {
+    list-style: none;
+    margin-top: 0;
+    padding-top: 13px;
+}
+.dropdown-toggle img{
+    width: auto;
+    height: 30px;
+}
+.nm-user-wrapper{
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    background: #fff;
+    height: 100px;
+    width: 100%;
+display: block;
+position: relative;
+    padding: 10px;
+
+z-index: 100;
+
+     /* Use half of the width (120/2 = 60), to center the tooltip */
+
+}
+
+.sidebar{
+    padding-top: 80px;
+    background: transparent;
+    border-right: none;
+/*box-shadow: 0 1px 2px rgba(0,0,0,.1)*/
+}
+.nm-user-wrapper::after, .nm-user-wrapper::before{
+        top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+
+}
+.nm-user-wrapper::after{
+    border-color: rgba(255,255,255,0);
+border-top-color: #fff;
+border-width: 16px;
+left: 50%;
+margin-left: -16px;
+
+}
+.nm-user-wrapper::before {
+border-color: rgba(213,213,213,0);
+border-top-color: #ddd;
+border-width: 17px;
+left: 50%;
+margin-left: -17px;
+}
+.navbar-default{
+    background-color: #fff;
+    border-color: #e7e7e7;
+    border-width: 0 0 1px;
+}
+.navbar-brand .nm-logo > img{
+    width: auto;
+    height: 30px;
+}
+.nm-user-deets{
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+    min-height: 300px;
+    background-color: #fff;
+
+}
+.nm-user-deets-01{
+    border-bottom: 1px solid #ffffff;
+    min-height: 100px;
+    width: 100%;
+}
+.nm-user-deets-01, .nm-user-deets-02{
+    padding: 10px;
+}
+.nav-sidebar  a{
+    color: rgb(136, 153, 166);
+    font-size: 16px;
+}
+.nav-sidebar {
+    margin-right: 0;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+.nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 8px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+
+
+</style>
+       <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+{% endblock%}
+
+
+{% block global_header %}
+ <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-shade.svg" %}">
+                  </div>
+          </a>
+            <ul class=" hidden-lg hidden-sm  navbar-right  navbar-nav">
+          <li style="margin-right: 10px;">
+                  {% if user.is_authenticated %}
+                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+                 {% endif %}
+
+              </li>
+      </ul>
+        </div>
+
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav hidden-lg hidden-sm ">
+             <li class="active"><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+
+            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+             <li><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+            <li ><a href="{% url 'activity' %}"><i class="fa fa-send-o fa-fw" aria-hidden="true"></i>&nbsp;Actions</a></li>
+
+         </ul>
+
+
+          <ul class=" navbar-right hidden-xs  navbar-nav">
+          <li style="margin-right: 10px;">
+                  {% if user.is_authenticated %}
+                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+                 {% endif %}
+
+              </li>
+
+
+
+             <li class="dropdown ">
+              <a  href="{% url 'dashboard'%}" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <div ><img src="{% static "influencers/images/noisemaker-user-icon.svg" %}"></div>
+              </a>
+              <ul class="dropdown-menu">
+                  <li class="active"><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+                <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+
+            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+                  <li ><a href="{% url 'create' %}"><i class="fa fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
+            <li ><a href="{% url 'activity' %}"><i class="fa fa-send-o fa-fw" aria-hidden="true"></i>&nbsp;Actions</a></li>
+
+
+              </ul>
+            </li>
+
+          </ul>
+
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+{% endblock %}
+{% block content %}
+      <div class="">
+      <div class="row">
+        <div class="col-sm-4 col-md-3 sidebar">
+
+            <div class="nm-user-wrapper"  data-placement="top" >
+                {% if user.is_authenticated %}
+                {% for object in us %}
+	<h4 class="text-capitalize">{{ object.rank }}</h4>
+
+            </div>
+
+            <div class="nm-user-deets">
+
+                <div class="nm-user-deets-01">
+                    <ul class="nav nav-sidebar">
+
+
+            <li><a>Decibel &nbsp;<span class="badge">{{ object.decibel }}</span></a></li>
+            <li><a href="{% url 'payout' %}">Escrow &nbsp;<span class="badge">&#8358;{{ object.escrow }}</span>
+                <span class="badge">Payout</span> </a></li>
+
+                        {% endfor %}
+          </ul>
+                <p>
+
+                </p>
+
+                </div>
+
+
+                <div class="nm-user-deets-02">
+            <form method="POST" class="post-form" >
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_tracking_id"></label>
+ <input id="id_tracking_id" type="text" name="tracking_id" class="form-control" placeholder="Enter Tracking ID" required >
+ <div class="help-block text-danger with-errors">{{ form.tracking_id.errors.as_text }}</div>
+        <p><input type="submit" class="btn btn-success" value="Confirm Action" style="width: 100%;" /></p>
+                                    </div>
+         <div class="{{ errorclass4 }}" > {{ alreadytracked }}</div>
+        <div class="{{ errorclass5 }}" > {{ noaction }}</div>
+    </form>
+                    </div>
+</div>
+</div>
+          {% endif %}
+
+
+          <div class="col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 main">
+
+
+            <div class="row">
+                {% for object in cam %}
+                    <div class="col-md-6 cam">
+                    <div class="nm-campaign-wrapper">
+
+                        <div class="nm-hd-cam" style=" padding: 10px;">
+                        <p class="nm-cam-dt">Action<span class="mark">{{ object.action }}</span> </p>
+                        <p class="nm-cam-dt">Base Pay<span class="mark">&#8358; {{ object.base_pay }}</span></p>
+                        <p class="nm-cam-dt">Tracking Number<span class="mark">{{ object.dummy_tracker }}</span></p>
+
+                        </div>
+                        <div class="nm-sep">
+                            <hr>
+
+                        </div>
+                         {% if object.action == 'Retweet' %}
+                        <div class="nm-main" style="padding: 10px">
+                <blockquote class="twitter-tweet" style="max-height: 400px;">
+<a href="{{ object.url }}"></a></blockquote>
+                    </div>
+                            {% elif object.action == 'Follow' %}
+                         <div class="nm-main" style="padding: 10px">
+
+                         <a class="twitter-follow-button"
+  href="https://twitter.com/{{ object.follow_handle }}"
+  data-size="large">
+Follow @{{ object.follow_handle }}</a>
+                    </div>
+                              {% elif object.action == 'Tweet' %}
+                         <div class="nm-main" style="padding: 10px">
+
+                             <div class="well">
+
+                            <p><span class="mark"> Hashtag</span><br>{{ object.hash_tag }}</p>
+
+                             <p><span class="mark"> Desired Tweet</span><br>
+
+
+                            {{ object.tweet }}</p>
+                        </div>
+
+                    </div>
+
+                        {% endif %}
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+              </div>
+
+    </div>
+
+
+
+
+
+    </div>
+    <div class="nm-mobile-tracker hidden-lg hidden-sm">
+     <form class=""  method="post" action=".">
+         <div class="help-block text-danger with-errors">{{ form.tracking_id.errors.as_text }}</div>
+    <div class="input-group add-on">
+      <input class="form-control" placeholder="Enter Tracking Number" name="tracking_id" id="id_tracking_id" type="text">
+      <div class="input-group-btn">
+        <button class="btn btn-default" style="height: 44px;;" type="submit"><i class="fa fa-fw fa-location-arrow"></i></button>
+      </div>
+    </div>
+       <div class="{{ errorclass4 }}" > {{ alreadytracked }}</div>
+        <div class="{{ errorclass5 }}" > {{ noaction }}</div>
+  </form>
+
+    </div>
+
+     <div class="modal fade" id="{{ modal01 }}" role="dialog" style="padding-top: 80px;">
+    <div class="modal-dialog">
+    <div class="modal-content" style="max-width: 300px; margin: 0 auto;">
+        <div class="modal-header">
+
+          <h3 class="modal-title text-center"><img style="width: 80px; height: auto;" src="{% static "influencers/images/earned-icon.svg" %}"> </h3>
+
+        </div>
+        <h2 class="text-center">&#8358;{{ earned }} </h2>
+        <div class="modal-body">
+
+
+                </div>
+
+      </div>
+</div></div>
+
+
+{% endblock %}
+{% block gloal_footer %}
+{% endblock %}

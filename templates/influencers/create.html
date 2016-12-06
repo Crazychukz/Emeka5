@@ -1,0 +1,498 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% load staticfiles %}
+{% block inline_style %}
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+
+  </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: transparent;
+}
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+    .navbar-toggle{
+    margin-top: 12px;
+}
+
+.navbar-header{
+    text-align: center;
+
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    text-shadow: none;
+}
+ul.navbar-right {
+    list-style: none;
+    margin-top: 0;
+    color: #fff;
+    padding-top: 12px;
+}
+.dropdown-toggle img{
+    width: auto;
+    height: 30px;
+}
+    .navbar-default{
+    background-color: #04bfad;
+    border-color: #e7e7e7;
+    border-width: 0 0 1px;
+}
+.navbar-brand .nm-logo > img{
+    width: auto;
+    height: 30px;
+}
+    .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 8px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+    body {
+  background: #eee;
+
+}
+    .nm-dash {
+        width: 100%;
+        height: auto;
+        padding-bottom: 20px;
+
+    }
+    output {
+        display: inline-block;
+    padding-top: 7px;
+    font-size: 14px;
+    line-height: 1.42857143;
+     font-weight: bold;
+    color: #555;
+}
+    .form-wrapper{
+        box-shadow: none;
+    margin-top: 10px;
+    }
+    .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+}
+    .panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 4px;
+    -webkit-box-shadow:none;
+    box-shadow: none;
+}
+.container{
+    max-width: 970px;
+}
+    </style>
+    <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+ <nav class="navbar navbar-default navbar-fixed-top hidden-lg hidden-md hidden-sm">
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'index' %}">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
+                  </div>
+          </a>
+            <ul class=" navbar-right  navbar-nav">
+
+          <li style="margin-right: 10px;">
+                  {% if user.is_authenticated %}
+                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                {% else %}
+                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
+                 {% endif %}
+
+              </li>
+      </ul>
+        </div>
+
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+         <ul class="nav navbar-nav  ">
+             <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Campaigns</a></li>
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+
+            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+
+            <li class="active"><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
+             <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp;Invite</a></li>
+         </ul>
+
+
+
+
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <div class="ns-lg">
+               <a  href="{% url 'index' %}"> <img class="img-responsive" src="{% static 'influencers/images/noisemaker-light.svg' %}">
+</a>
+            </div>
+            <ul class="nav nav-sidebar">
+
+            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+
+            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+
+            <li class="active"><a href=""><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
+             <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp; Invite</a></li>
+                 <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+                <li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'auth_logout' %}"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;{% trans "Log out" %}</a>
+                {% endif %}
+                </li>
+          </ul>
+        </div>
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+
+
+
+
+<div class="nm-dash">
+  <h4 class="page-header">Start Your Campaign</h4>
+
+
+<div class="form-wrapper">
+
+
+    <form method="post" action=".">
+        {% csrf_token %}
+
+<div class="nm-radio">
+    <fieldset>
+        <legend>Action</legend>
+<ul class="nm-ul list-unstyled">
+        <li><div class="nm-radio-info">
+    <input id="id_action_0" name="action" type="radio" value="Retweet" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" required checked="" />
+        <label for="id_action_0">Retweet</label>
+</div></li>
+    <li>
+    <div class="nm-radio-info">
+        <input id="id_action_1" name="action" type="radio" value="Follow" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" required />
+        <label for="id_action_1">Follow</label>
+    </div></li>
+    <li>
+    <div class="nm-radio-info">
+        <input id="id_action_2" name="action" type="radio" value="Tweet" data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" required />
+        <label for="id_action_2">Tweet</label>
+    </div></li>
+    </ul></fieldset>
+    </div>
+          <div class="panel-group" id="accordion">
+    <div class="panel ">
+
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="">
+            <div class="form-group">
+            <label for="id_url"></label>
+            <input placeholder="Paste tweet url" class="required form-control" id="id_url" maxlength="250" name="url" type="text" />
+                </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="panel ">
+
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="">
+            <div class="form-group input-group">
+<span class="input-group-addon">@</span>
+                <input placeholder="Twitter handle" id="id_follow_handle" name="follow_handle" class="form-control" type="text"  />
+                </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="">
+            <div class="form-group input-group">
+               <span class="input-group-addon">#</span>
+                <input placeholder="Hash tag" id="id_hash_tag" name="hash_tag" type="text" class="form-control"  />
+
+            </div>
+            <div class="form-group">
+                <label for="id_tweet"></label>
+                <textarea placeholder="Enter Desired tweet" id="id_tweet" name="tweet"   rows="7" class="form-control" ></textarea>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+        <div class="form-group input-group ">
+            <span class="input-group-addon">&#8358;</span>
+            <input placeholder="Base pay per action" id="id_base_pay" name="base_pay" type="number" class="form-control" required  />
+        </div>
+<fieldset>
+    <legend>Preference</legend>
+    <div class="nm-radio">
+        <ul class="nm-ul list-unstyled">
+            <li>
+        <div class="nm-radio-info">
+            <input id="id_preference_0" name="preference" type="checkbox" value="All" />
+            <label for="id_preference_0">All</label>
+
+
+        </div>
+                </li>
+            <li>
+        <div class="nm-radio-info">
+            <input id="id_preference_1" name="preference" type="checkbox" value="Fashion and Lifestyle" />
+              <label for="id_preference_1">  Fashion and Lifestyle</label>
+        </div>
+                </li>
+            <li>
+        <div class="nm-radio-info">
+            <input id="id_preference_2" name="preference" type="checkbox" value="Sports, Politics and Education" />
+               <label for="id_preference_2"> Sports, Politics and Education</label>
+        </div></li>
+            <li>
+        <div class="nm-radio-info">
+            <input id="id_preference_3" name="preference" type="checkbox" value="Technology" />
+             <label for="id_preference_3">   Technology</label>
+
+        </div></li>
+            </ul>
+
+    </div>
+
+
+
+
+
+
+</fieldset>
+         <div class="form-group">
+<label >Decibel:<output for="fader" id="Db" >50</output></label>
+        <input id="id_decibel" name="decibel" type="range" step="1"
+               oninput="outputUpdate(value)" value="50" min="0" max="100"
+               readonly style="border:0;  color:#f6931f; font-weight:bold;"
+                class="decibels" required />
+    </div>
+<div style="padding: 10px; padding-left: 0">
+        <p>Campaign Cost:&nbsp;<span class="label label-default">&#8358;<span id="sum">0</span> </span></p>
+    </div>
+
+<input class="btn btn-success"  type="submit" value="Create" />
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+                 </div>
+                 </div>
+             <div class="nm-dash">
+             <h4 class="page-header">Your Campaigns</h4>
+
+    {% for objects in your_campaigns %}
+        <div class="row">
+<div class="col-md-6">
+{% if objects.action == 'Retweet' %}
+                        <div class="nm-main" style="padding: 10px">
+                <blockquote class="twitter-tweet" style="max-height: 400px;">
+<a href="{{ objects.url }}"></a></blockquote>
+                    </div>
+                            {% elif objects.action == 'Follow' %}
+                         <div class="nm-main" style="padding: 10px">
+
+                         <a class="twitter-follow-button"
+  href="https://twitter.com/{{ objects.follow_handle }}"
+  data-size="large">
+Follow @{{ objects.follow_handle }}</a>
+                    </div>
+                              {% elif objects.action == 'Tweet' %}
+                          <div class="nm-main" style="padding: 10px">
+
+                             <div class="well">
+
+                            <p><span class="mark"> Hashtag</span><br>{{ objects.hash_tag }}</p>
+
+                             <p><span class="mark"> Desired Tweet</span><br>
+
+
+                            {{ objects.tweet }}</p>
+                        </div>
+
+                    </div>
+
+
+                        {% endif %}
+
+</div>
+<div class="col-md-6">
+<label>Decibel</label>
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+  aria-valuenow="{{ objects.decibel }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ objects.decibel }}%">
+{{ objects.decibel }}
+  </div>
+</div>
+<p>
+    {% if objects.approved == False %}
+                  <i class="fa fa-spinner fa-pulse  fa-fw"></i>&nbsp;Waiting Approval
+                      {% elif objects.approved == True %}
+                      <i class="fa fa-check"></i>
+                      {% endif %}
+</p>
+    <p><label>Action</label>
+        {{ objects.action }}
+    </p>
+    <p><label>Base Pay</label>
+        &#8358;{{ objects.base_pay }}
+    </p>
+    <p><label>Noisemakers</label>
+        {{ objects.activity_count }} Noisemakers have acted
+    </p>
+    <p><label>Noise</label>
+        {{ objects.estimated_reach }} People reached
+    </p>
+    <P>
+        &#8358;{{ objects.budget }} Left to spend
+    </P>
+</div>
+
+
+             </div>
+        <hr>
+
+                 {% endfor %}
+
+
+             </div>
+
+             </div></div>
+
+
+
+
+{% endblock %}
+{% block gloal_footer %}
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+function outputUpdate(db) {
+	document.querySelector('#Db').value = db;
+}
+</script>
+
+<script>
+ $(document).ready(function() {
+
+     $("#id_base_pay").keyup(function() {
+         calculateSum();
+     });
+
+     $('#id_decibel').on('change', function() {
+         calculateSum();
+     });
+
+ });
+
+ function calculateSum() {
+
+     var sum = 0;
+     //iterate through each textboxes and add the values
+     $("#id_base_pay").each(function() {
+
+         //add only if the value is number
+         if (!isNaN(this.value) && this.value.length != 0) {
+             //check cooresponding quantity
+             var qty = $(this).parents('div').find('.decibels').val();
+             sum += (parseFloat(this.value) * parseInt(qty, 10));
+         }
+
+     });
+	   //.toFixed() method will roundoff the final sum to 2 decimal places
+     $("#sum").html(sum.toFixed(2));
+ }
+
+</script>
+
+
+{% endblock %}
