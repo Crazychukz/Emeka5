@@ -159,7 +159,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'postmaster@crazychukz.com'
 EMAIL_HOST_PASSWORD = 'bb8e1082aa15b17889659adb0dea5187'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Noisemakerz <testing>'
+DEFAULT_FROM_EMAIL = 'Noisemakerz <noisemakerz@crazychukz.com>'
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
