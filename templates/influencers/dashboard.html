@@ -1,192 +1,123 @@
-{% extends 'base.html' %}
+{% extends 'influencers/noisemakerz_base.html' %}
 {% load i18n %}
-
 {% load staticfiles %}
-{% block inline_style %}
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <style>
-     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: transparent;
-}
-    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    background-color: transparent;
-}
-    .navbar-toggle{
-    margin-top: 12px;
-}
-
-.navbar-header{
-    text-align: center;
-
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #fff;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-    text-shadow: none;
-}
-ul.navbar-right {
-    list-style: none;
-    margin-top: 0;
-    color: #fff;
-    padding-top: 12px;
-}
-.dropdown-toggle img{
-    width: auto;
-    height: 30px;
-}
-    .navbar-default{
-    background-color: #04bfad;
-    border-color: #e7e7e7;
-    border-width: 0 0 1px;
-}
-.navbar-brand .nm-logo > img{
-    width: auto;
-    height: 30px;
-}
-    .nav > li > a:hover {
-    text-decoration: none;
-    background-color: transparent;
-}
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0;
-    margin: 8px 0 0;
-    font-size: 14px;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-    body {
-  background: #eee;
-
-}
-    .nav > li > a {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-        color: #ffffff;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-}
-.container{
-    max-width: 970px;
-}
-    .main{
-
-}
-    </style>
+{% block page_title %}
+    Dashboard
 {% endblock %}
+{% block tracker %}
+{% endblock %}
+{% block dashboard_nav_01 %}
+                <li class="active" ><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+                {% endblock %}
+ {% block dashboard_nav %}
+                <li class="active" ><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard" aria-hidden="true"></i>&nbsp; Dashboard</a></li>
+                {% endblock %}
+{% block right_col %}
 
-{% block content %}
-      <nav class="navbar navbar-default navbar-fixed-top hidden-lg hidden-md hidden-sm">
-      <div class="container">
-
-        <div class="navbar-header">
-
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'index' %}">
-              <div class="nm-logo">
-              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
-                  </div>
-          </a>
-            <ul class=" navbar-right  navbar-nav">
-          <li style="margin-right: 10px;">
-                  {% if user.is_authenticated %}
-                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
-                {% else %}
-                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
-                 {% endif %}
-
-              </li>
-      </ul>
-        </div>
-
-
-
-        <div id="navbar" class="navbar-collapse collapse">
-         <ul class="nav navbar-nav  ">
-             <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
-            <li class="active"><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
-             <li  ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
-
-            <li ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
-             <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp;Invite</a></li>
-         </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-
-
-
-
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-             <div class="ns-lg">
-               <a  href="{% url 'index' %}"> <img class="img-responsive" src="{% static 'influencers/images/noisemaker-light.svg' %}">
-</a>
-            </div>
-            <ul class="nav nav-sidebar">
-            <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
-
-            <li class="active"><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
-
-            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
-
-            <li ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
-                <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope" aria-hidden="true"></i>&nbsp; Invite</a></li>
-                <li>
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'auth_logout' %}"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;{% trans "Log out" %}</a>
-                {% endif %}
-                </li>
-          </ul>
-        </div>
-         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-
-                 <section>
-                     <div class="nm-dash">
+     <div class="nm-dash">
                          <div class="row">
                              <div class="col-md-6">
+                             <div style="width: 300px; margin: 0 auto;" class="nm-levels hidden-lg hidden-md">
+{%  if nsp.rank == "Whisperer" %}
 
-                                     <h3>
 
-                                         {{ nsp.rank }}
+                                     <h4>
 
-                                     </h3>
 
-                                 <label>
-                                     <em>Decibel: </em>{{ nsp.decibel }}
-                                 </label>
+            <img style="width: 100px; height: auto; margin: 0 auto;" class="img-responsive" src="{% static 'influencers/images/nm-whisperer-icon.svg' %}">
+
+
+                                     </h4>
+                             <h3 class="text-center"><span>Whisperer</span></h3>
+    {% elif nsp.rank == "jabber" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;margin: 0 auto;" class="img-responsive" src="{% static 'influencers/images/nm-jabber-icon.svg' %}">
+                                     </h4>
+
+                             <h3 class="text-center"><span>Jabber</span></h3>
+        {% elif nsp.rank == "Hypeman" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;margin: 0 auto;" class="img-responsive" src="{% static 'influencers/images/nm-hypeman-icon.svg' %}">
+                                     </h4>
+                   <h3 class="text-center"><span>Hypeman</span></h3>
+
+         {% elif nsp.rank == "Preacher" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;margin: 0 auto;" class="img-responsive" src="{% static 'influencers/images/nm-preacher-icon.svg' %}">
+                                     </h4>
+                             <h3 class="text-center"><span>Preacher</span></h3>
+          {% elif nsp.rank == "Town Crier" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;margin: 0 auto;" class="img-responsive" src="{% static 'influencers/images/nm-town-crier.svg' %}">
+                                     </h4>
+                             <h3 class="text-center"><span>Town Crier</span></h3>
+
+
+                                 {% endif %}
+                             <ul class="list-unstyled list-inline text-center">
+                                     <li>
+                                         Decibel: <span class="badge"> {{ nsp.decibel }}</span>
+                                     </li>
+                                 <li>
+                                         My account: <span class="badge">&#8358; {{ nsp.escrow }}</span>
+                                     </li>
+                                 </ul>
+                             </div>
+                             <div class="nm-levels hidden-xs hidden-sm">
+{%  if nsp.rank == "Whisperer" %}
+
+
+                                     <h4>
+
+
+            <img style="width: 100px; height: auto;" class="img-responsive" src="{% static 'influencers/images/nm-whisperer-icon.svg' %}">
+
+
+                                     </h4>
+                             <h2><span>Whisperer</span></h2>
+    {% elif nsp.rank == "jabber" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;" class="img-responsive" src="{% static 'influencers/images/nm-jabber-icon.svg' %}">
+                                     </h4>
+
+                             <h2><span>Jabber</span></h2>
+        {% elif nsp.rank == "Hypeman" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;" class="img-responsive" src="{% static 'influencers/images/nm-hypeman-icon.svg' %}">
+                                     </h4>
+                   <h2><span>Hypeman</span></h2>
+
+         {% elif nsp.rank == "Preacher" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;" class="img-responsive" src="{% static 'influencers/images/nm-preacher-icon.svg' %}">
+                                     </h4>
+                             <h2><span>Preacher</span></h2>
+          {% elif nsp.rank == "Town Crier" %}
+                                 <h4>
+            <img style="width: 100px; height: auto;" class="img-responsive" src="{% static 'influencers/images/nm-town-crier.svg' %}">
+                                     </h4>
+                             <h2><span>Town Crier</span></h2>
+
+
+                                 {% endif %}
+                             <ul class="list-unstyled list-inline">
+                                     <li>
+                                         Decibel: <span class="badge"> {{ nsp.decibel }}</span>
+                                     </li>
+                                 </ul>
+                             </div>
+
+
 
                              </div>
                              <div class="col-md-6">
 <div class="nm-deci">
-    <ul class="nav navbar-right">
-        <li style="color: #212121;"><img style="width: 30px; height: auto;" class="img-responsive" src="{% static 'influencers/images/earned-icon.svg' %}">
+    <ul class="nav navbar-right hidden-sm hidden-xs">
+        <li style="color: #212121;">
+
+
+            <img style="width: 30px; height: auto;" class="img-responsive" src="{% static 'influencers/images/earned-icon.svg' %}">
+
         &#8358;{{ nsp.escrow }}</li>
     </ul>
 
@@ -219,8 +150,9 @@ ul.navbar-right {
                              </div>
                          </div>
                      </div>
-<div class="nm-dash">
- <h2 class="page-header">History</h2>
+
+    <div class="nm-dash">
+ <h2 class="page-header">Your Noise Making History</h2>
 
 
 
@@ -231,7 +163,6 @@ ul.navbar-right {
                   <th>Tracking ID</th>
                   <th>Action</th>
                   <th>Base Pay</th>
-
                 </tr>
               </thead>
               <tbody>
@@ -240,7 +171,7 @@ ul.navbar-right {
 
                   <td>{{ objects.campaign.dummy_tracker }}</td>
                   <td>{{ objects.campaign.action }}</td>
-                  <td>{{ objects.campaign.base_pay }}</td>
+                  <td>&#8358;{{ objects.campaign.base_pay }}</td>
 
                 </tr>
                 {% endfor %}
@@ -251,15 +182,9 @@ ul.navbar-right {
 
               </tbody>
             </table>
-          </div></div>
-
-                 </section>
-
-
-                 </div>
-             </div>
+          </div>
 
 
 {% endblock %}
-{% block gloal_footer %}
+{% block mobile_tracker %}
 {% endblock %}

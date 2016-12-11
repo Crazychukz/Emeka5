@@ -258,7 +258,10 @@ class HandleForm(forms.Form):
 
     )
 
-    twitter_handle = forms.CharField(widget=forms.TextInput)
+    twitter_handle = forms.RegexField(regex=r'^\w+$',
+                                max_length=30,
+                                widget=forms.TextInput(attrs=attrs_dict),
+                                error_messages={'invalid': _("This value must contain only letters, numbers and underscores.")})
     preference = forms.CharField(widget=forms.CheckboxSelectMultiple(choices=PREFERENCES), required=True, label=_("preference"))
 
 

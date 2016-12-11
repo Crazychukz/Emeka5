@@ -46,14 +46,18 @@ class NoisemakerProfile(models.Model):
     def __str__(self):
         return '%s %s %s %s' % (self.user, self.twitter_handle, self.decibel, self.escrow)
 
-    def rank(self):
+def rank(self):
 
-        if self.decibel <= 0.5:
-            return "Amateur Noisemaker"
-        elif self.decibel <= 0.10:
-            return "Top Noisemaker"
+        if self.decibel <= 1.0:
+            return "Whisperer"
+        elif self.decibel <= 2.0:
+            return "Jabber"
+        elif self.decibel <= 4.0 :
+            return "Hypeman"
+        elif self.decibel <= 5.0:
+            return "Preacher"
         else:
-            return "Grade A"
+            return "Town Crier"
 
 
 

@@ -1,5 +1,5 @@
 Email:
-{{ email }}
+{{ email_r }}
 
 Twitter Handle:
 {{ twitter_handle }}

@@ -1,232 +1,22 @@
-{% extends 'base.html' %}
-{% load i18n %}
-
+{% extends 'influencers/noisemakerz_base.html' %}
 {% load staticfiles %}
-{% block inline_style %}
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
 
-  </script>
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <style>
-    .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-    border-color: transparent;
-}
-    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    background-color: transparent;
-}
-    .navbar-toggle{
-    margin-top: 12px;
-}
-
-.navbar-header{
-    text-align: center;
-
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #fff;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-    text-shadow: none;
-}
-ul.navbar-right {
-    list-style: none;
-    margin-top: 0;
-    color: #fff;
-    padding-top: 12px;
-}
-.dropdown-toggle img{
-    width: auto;
-    height: 30px;
-}
-    .navbar-default{
-    background-color: #04bfad;
-    border-color: #e7e7e7;
-    border-width: 0 0 1px;
-}
-.navbar-brand .nm-logo > img{
-    width: auto;
-    height: 30px;
-}
-    .nav > li > a:hover {
-    text-decoration: none;
-    background-color: transparent;
-}
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0;
-    margin: 8px 0 0;
-    font-size: 14px;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-    body {
-  background: #eee;
-
-}
-    .nm-dash {
-        width: 100%;
-        height: auto;
-        padding-bottom: 20px;
-
-    }
-    output {
-        display: inline-block;
-    padding-top: 7px;
-    font-size: 14px;
-    line-height: 1.42857143;
-     font-weight: bold;
-    color: #555;
-}
-    .form-wrapper{
-        box-shadow: none;
-    margin-top: 10px;
-    }
-    .nav > li > a {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-        color: #ffffff;
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-}
-    .panel {
-    margin-bottom: 20px;
-    background-color: #fff;
-    border: none;
-    border-radius: 4px;
-    -webkit-box-shadow:none;
-    box-shadow: none;
-}
-.container{
-    max-width: 970px;
-}
-    </style>
-    <script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script>
+{% block page_title %}
+    Your Campaigns
 {% endblock %}
+{% block tracker %}
+{% endblock %}
+{% block your_campaigns_nav_01 %}
+                <li class="active" ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+                {% endblock %}
+ {% block your_campaigns_nav %}
+                <li class="active" ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+                {% endblock %}
 
-
-
-
-{% block content %}
-
- <nav class="navbar navbar-default navbar-fixed-top hidden-lg hidden-md hidden-sm">
-      <div class="container">
-
-        <div class="navbar-header">
-
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{% url 'index' %}">
-              <div class="nm-logo">
-              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
-                  </div>
-          </a>
-            <ul class=" navbar-right  navbar-nav">
-
-          <li style="margin-right: 10px;">
-                  {% if user.is_authenticated %}
-                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
-                {% else %}
-                <a class="" data-toggle="modal" data-target="#myModal">{% trans "Log in" %}</a>
-                 {% endif %}
-
-              </li>
-      </ul>
-        </div>
-
-
-
-        <div id="navbar" class="navbar-collapse collapse">
-         <ul class="nav navbar-nav  ">
-             <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Campaigns</a></li>
-            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
-
-            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
-
-            <li class="active"><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
-             <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp;Invite</a></li>
-         </ul>
-
-
-
-
-
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-
-
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <div class="ns-lg">
-               <a  href="{% url 'index' %}"> <img class="img-responsive" src="{% static 'influencers/images/noisemaker-light.svg' %}">
-</a>
-            </div>
-            <ul class="nav nav-sidebar">
-
-            <li><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
-
-            <li ><a href="{% url 'payout' %}" ><i class="fa fa-money fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
-
-            <li class="active"><a href=""><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp;Your Campaigns</a></li>
-             <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope fa-fw" aria-hidden="true"></i>&nbsp; Invite</a></li>
-                 <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
-                <li>
-                    {% if user.is_authenticated %}
-                    <a href="{% url 'auth_logout' %}"><i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;{% trans "Log out" %}</a>
-                {% endif %}
-                </li>
-          </ul>
-        </div>
-         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
-
-
-
-
+{% block right_col %}
 
 <div class="nm-dash">
-  <h4 class="page-header">Start Your Campaign</h4>
+  <h4 class="page-header">Start Your Own NoiseMaking Campaign</h4>
 
 
 <div class="form-wrapper">
@@ -302,7 +92,8 @@ ul.navbar-right {
             <input placeholder="Base pay per action" id="id_base_pay" name="base_pay" type="number" class="form-control" required  />
         </div>
 <fieldset>
-    <legend>Preference</legend>
+    <legend>Preference </legend>
+
     <div class="nm-radio">
         <ul class="nm-ul list-unstyled">
             <li>
@@ -316,7 +107,8 @@ ul.navbar-right {
             <li>
         <div class="nm-radio-info">
             <input id="id_preference_1" name="preference" type="checkbox" value="Fashion and Lifestyle" />
-              <label for="id_preference_1">  Fashion and Lifestyle</label>
+              <label for="id_preference_1">  Fashion and Lifestyle
+              </label>
         </div>
                 </li>
             <li>
@@ -351,7 +143,7 @@ ul.navbar-right {
         <p>Campaign Cost:&nbsp;<span class="label label-default">&#8358;<span id="sum">0</span> </span></p>
     </div>
 
-<input class="btn btn-success"  type="submit" value="Create" />
+<input class="btn nm-btn-primary"  type="submit" value="Create" />
 
     </form>
 
@@ -441,14 +233,7 @@ Follow @{{ objects.follow_handle }}</a>
         <hr>
 
                  {% endfor %}
-
-
              </div>
-
-             </div></div>
-
-
-
 
 {% endblock %}
 {% block gloal_footer %}
@@ -493,6 +278,9 @@ function outputUpdate(db) {
  }
 
 </script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
+{% endblock %}
+{% block mobile_tracker %}
 {% endblock %}

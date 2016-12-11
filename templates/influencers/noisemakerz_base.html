@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block inline_style %}
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+    <script>
+ //   $('.row').masonry({
+  // options
+ // itemSelector: '.cam',
+ // columnWidth: '.grid-sizer',
+//  percentPosition: true
+//});
+    </script>
+ <style>
+
+ </style>
+
+    <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_02.css' %}" type="text/css">
+
+{% endblock %}
+
+{% block global_header %}
+      <nav class="navbar   navbar-fixed-top nm-global-nav ">
+      <div class="container-fluid">
+      <div class="hidden-md hidden-lg hidden-sm ">
+               <ul class="nm-btn-01 list-unstyled navbar-right  navbar-nav">
+          <li style="margin-right: 10px;">
+                  {% if user.is_authenticated %}
+                      <a class="" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
+                 {% endif %}
+            </li>
+      </ul>
+      </div>
+
+        <div class="navbar-header clearfix" >
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <i class="sr-only">Toggle navigation</i>
+            <i class="icon-bar"></i>
+            <i class="icon-bar"></i>
+            <i class="icon-bar"></i>
+          </button>
+          <a class="nm-main-logo" href="{% url 'index' %}">
+              <div class="nm-logo">
+              <img src="{% static "influencers/images/noisemaker-light.svg" %}" alt="Noisemakerz Logo">
+                  </div>
+          </a>
+            <div class="nm-title hidden-xs hidden-sm hidden-md list-unstyled navbar-left">
+                <div>{% block page_title %}
+                    {% endblock %}
+                </div>
+            </div>
+{% block tracker %}
+
+{% endblock%}
+        </div>
+
+
+
+
+
+
+        <div id="navbar" class="navbar-collapse collapse ">
+            <div class="hidden-lg hidden-md hidden-sm">
+         <ul class="nav navbar-nav  ">
+             {% block dashboard_nav_01 %}
+                <li class="" ><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+                {% endblock %}
+            {% block campaigns_nav_01 %}
+                <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+                {% endblock %}
+            {% block your_campaigns_nav_01 %}
+                <li ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+                {% endblock %}
+            {% block invite_nav_01 %}
+                <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope" aria-hidden="true"></i>&nbsp; Invite</a></li>
+                {% endblock %}
+            {% block payouts_nav_01 %}
+                <li ><a href="{% url 'payout' %}" ><i class="fa icons-pay fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+                {% endblock %}
+
+
+
+         </ul></div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+             <div class="ns-lg">
+               <a  href="{% url 'index' %}"> <img class="img-responsive" src="{% static 'influencers/images/noisemaker-light.svg' %}"></a>
+            </div>
+            <ul class="nav nav-sidebar">
+            {% block dashboard_nav %}
+                <li ><a href="{% url 'dashboard' %}"><i class="fa  fa-dashboard fa-fw" aria-hidden="true"></i>&nbsp;Dashboard </a> </li>
+                {% endblock %}
+            {% block campaigns_nav %}
+                <li ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
+                {% endblock %}
+            {% block your_campaigns_nav %}
+                <li ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+                {% endblock %}
+            {% block invite_nav %}
+                <li ><a href="{% url 'send-invite' %}"><i class="fa  fa-envelope" aria-hidden="true"></i>&nbsp; Invite</a></li>
+                {% endblock %}
+            {% block payouts_nav %}
+                <li ><a href="{% url 'payout' %}" ><i class="fa icons-pay fa-fw" aria-hidden="true"></i>&nbsp;Payouts</a></li>
+                {% endblock %}
+             <li>
+                 {% if user.is_authenticated %}
+                     <a href="{% url 'auth_logout' %}">
+                         <i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;{% trans "Log out" %}</a>
+                 {% endif %}
+                </li>
+          </ul>
+
+        <ul class="nav nav-sidebar nm-ul-02">
+            <li><a href="">Faqs</a> </li>
+            </ul>
+        <div class="n-footer-02">
+           <em>&copy; {% now "Y" %} Noisemakers</em>
+        </div>
+        </div><!-- end left col-->
+
+
+
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+          <div class="main">
+          {% block right_col %}
+
+              {% endblock %}
+          </div>
+              </div><!-- end right -->
+
+    </div>
+
+{% block mobile_tracker %}
+
+{% endblock %}
+{% endblock %}
+{% block gloal_footer %}
+{% endblock %}

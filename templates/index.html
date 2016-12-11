@@ -3,6 +3,16 @@
 {% load staticfiles %}
 {% block inline_style %}
 
+    <style>
+    body {
+
+     font-family: 'Roboto', sans-serif;
+}
+    .navbar-header {
+    padding-top: 15px;
+}
+    </style>
+
 
 {% endblock %}
 {% block global_header %}
@@ -30,9 +40,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+           <a class="nm-main-logo" href="{% url 'index' %}" >
               <div class="nm-logo">
-              <img src="{% static "influencers/images/noisemaker-shade.svg" %}">
+              <img src="{% static "influencers/images/noisemaker-shade.svg" %}" alt="Noisemakerz Logo">
                   </div>
           </a>
 
@@ -64,7 +74,7 @@
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container-fluid">
-      <ul class=" hidden-lg navbar-right">
+      <ul class=" list-unstyled hidden-lg hidden-md navbar-right">
 
             <li >            {% if user.is_authenticated %}
                 <a class="change btn btn-nm" href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>
@@ -83,16 +93,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <a class="nm-main-logo" href="{% url 'index' %}">
               <div class="nm-logo">
-              <img src="{% static "influencers/images/noisemaker-light.svg" %}">
+              <img src="{% static "influencers/images/noisemaker-light.svg" %}" alt="Noisemakerz Logo">
                   </div>
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             {% if user.is_authenticated %}
-            <li style="color:#fff ;" ><a href="{% url 'campaigns' %}" >Campaigns</a></li>
+            <li style="color:#fff ; font-size: 16px;" ><a style="color: #fff;" href="{% url 'campaigns' %}" >Campaigns</a></li>
             {% endif %}
 
 
@@ -122,22 +132,14 @@
 
         <div class="first-stack">
 
-        <div class="landing-image-wrapper ">
-
-             <img src="{% static "influencers/images/landing-bg-2.jpg" %}">
-
-
-
-
-    </div>
-            <div class="container">
+            <div class="container nm-carry " >
         <div class="row">
             <div class="col-xs-12 col-md-6 ">
                 <div class="nm-value-wrapper">
                <h1 class="nm-value"> Become A
                      Noisemaker</h1>
 
-<p class=""><mark>Earn money using your social media account.</mark><br> <mark>Its really that simple</mark></p>
+<p class=""><mark>Your Social media is more interesting when you make money off it</mark></p>
 </div>
             </div>
              <div class="col-xs-12 col-md-6">
@@ -163,18 +165,40 @@
 
         <input class="form-control" id="id_twitter_handle" name="twitter_handle" type="text" placeholder="Twitter handle" required />
 
-
         </div>
-
-
-
-
   <p><input type="submit" class="btn btn-success" value="Request Invite" style="width: 100%;" /></p>
 </form>
 
                </div>
             </div>
         </div></div>
+
+        <div class="landing-image-wrapper " style="width: 100%;">
+             <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+      <!-- Indicators -->
+
+      <div class="carousel-inner" role="listbox">
+
+        <div class="item active">
+           <img class="second-slide" src="{% static "influencers/images/landing-bg-2.jpg" %}">
+
+        </div>
+        <div class="item">
+          <img class="third-slide"  src="{% static "influencers/images/landing-bg-3.jpg" %}"alt="Third slide">
+
+        </div>
+      </div>
+
+    </div><!-- /.carousel -->
+
+
+
+
+
+
+    </div>
         </div>
      <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -233,8 +257,9 @@
                     </p>
 
                         <p >
-                           The easy one. Sign up and get ranked by the system, this determines your decibel and
-                            how moch you could earn from using your social media accounts.
+                           Get an invite from an already registered Noisemaker.
+                            Provide the necessary personal details. Become a Noisemaker.
+                            Easy peasy.
                         </p>
                     </div>
                 </div>
@@ -253,8 +278,9 @@
 
 
                         <p class="text-justify">
-                           Nothing too difficult, just your normal social media interactions - share, retweets, like and follow.
-                            make sure to confirm your actions.
+                           Nothing too difficult, just your normal social media interactions - share,
+                            retweets, like and follow.
+                            Make sure to track your actions
                         </p>
                     </div>
                 </div>
@@ -263,6 +289,7 @@
                 <div class="features-wrapper ">
 
                    <div class="nm-hm-icon pay-icon">
+
                        </div>
                     <div class="features text-center">
                         <p>
@@ -341,23 +368,5 @@ Follow @{{ object.follow_handle }}</a>
 
 
     </section>
-	
-	    <div class="modal fade" id="{{ modal01 }}" role="dialog" style="padding-top: 80px;">
-    <div class="modal-dialog">
-    <div class="modal-content" style="max-width: 300px; margin: 0 auto;">
-        <div class="modal-header">
-
-          <h3 class="modal-title text-center"><img style="width: 80px; height: auto;" src="{% static "influencers/images/noisemaker-user-icon.svg" %}"> </h3>
-
-        </div>
-     	 <h2 class="text-center" style="color:green;"> <i class="fa fa-check-circle-o "></i></h2>
-		 
-		 
-        <div class="modal-body">
-		
-                </div>
-
-      </div>
-</div></div>
 
 {% endblock %}
