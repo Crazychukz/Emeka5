@@ -2,6 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 
+
+
+class BigIntegerField(IntegerField):
+    empty_strings_allowed=False
+    def get_internal_type(self):
+        return "BigIntegerField"	
+    def db_type(self):
+        return 'bigint'
+
 class NoisemakerProfile(models.Model):
     BANKS = (
         ('Access Bank Plc', 'Access Bank Plc'),
