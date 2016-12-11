@@ -428,7 +428,7 @@ class GetStarted(View):
             twitter_ID = api.get_user(twitter_handle).id
             number_of_friends= api.get_user(twitter_handle).followers_count
             decibel = number_of_friends / 2000
-            nf = int(number_of_friends)
+            nf = number_of_friends
             update_nm = NoisemakerProfile(user=user, twitter_handle=twitter_handle,twitter_ID=twitter_ID,decibel=decibel, number_of_friends=nf, preferences=preference)
             update_nm.save()
 
