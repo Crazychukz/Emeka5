@@ -74,6 +74,7 @@ Follow @{{ object.follow_handle }}</a>
     <!-- mobile tracker -->
 <div class="nm-mobile-tracker hidden-lg hidden-sm">
      <form class="form-inline" method="post" action=".">
+         {% csrf_token %}
     {{ form.tracking_id.errors.as_text }}
        {{ alreadytracked }}
        {{ noaction }}

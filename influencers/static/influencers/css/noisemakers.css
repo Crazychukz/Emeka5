@@ -227,7 +227,7 @@ height: auto;}
     width: 100%;
     margin: 0 auto;
     position: absolute;
-    height: 200px;
+    min-height: 200px;
     bottom: 0;
     left: 0;
 
@@ -844,6 +844,19 @@ text-transform: uppercase;
     border-bottom: 1px solid #eee;
 }
 @media (max-width: 768px) {
+    .first-stack{
+    height: 500px;
+        overflow: hidden;
+}
+    .carousel {
+ height: 400px;
+  margin-bottom: 5px;
+        overflow: hidden;
+}
+    .carousel .item {
+    height: 400px;
+        overflow: hidden;
+    }
     .nm-value-wrapper{
     padding-top: 0px;
 }
@@ -923,5 +936,5 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
 }
 .nm-carry{
     position: relative;
-    z-index: 20000;
+    z-index: 88;
 }
