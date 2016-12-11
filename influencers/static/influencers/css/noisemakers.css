@@ -848,6 +848,9 @@ text-transform: uppercase;
     height: 500px;
         overflow: hidden;
 }
+    .nm-main-logo{
+        margin-left: 0;
+    }
     .carousel {
  height: 400px;
   margin-bottom: 5px;
