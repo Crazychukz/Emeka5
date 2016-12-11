@@ -32,7 +32,7 @@ class NoisemakerProfile(models.Model):
     twitter_handle = models.CharField(max_length=250, null=True)
     facebook_handle = models.CharField(max_length=250, null=True)
     instagram_handle = models.CharField(max_length=250, null=True)
-    twitter_ID = models.CharField(null=False, max_length=540, default=0)
+    twitter_ID = models.BigIntegerField(null=False,  default=0)
     facebook_ID = models.IntegerField(null=False, default=0)
     instagram_ID = models.IntegerField(null=False, default=0)
     number_of_friends = models.IntegerField(null=False, default=0)
