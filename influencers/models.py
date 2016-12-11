@@ -4,11 +4,10 @@ import datetime
 from django.db.models.fields import IntegerField
 
 
-
 class BigIntegerField(IntegerField):
     empty_strings_allowed=False
     def get_internal_type(self):
-        return "BigIntegerField"	
+        return "BigIntegerField"
     def db_type(self):
         return 'bigint'
 
@@ -44,7 +43,7 @@ class NoisemakerProfile(models.Model):
     instagram_handle = models.CharField(max_length=250, null=True)
     twitter_ID = models.BigIntegerField(null=False,  default=0)
     facebook_ID = models.IntegerField(null=False, default=0)
-    instagram_ID = models.IntegerField(null=False, default=0)
+    instagram_ID = models.BigIntegerField(null=False, default=0)
     number_of_friends = models.IntegerField(null=False, default=0)
     escrow = models.FloatField(null=False, default=0.0)
     decibel = models.FloatField(null=False, default=0.5)
@@ -56,7 +55,7 @@ class NoisemakerProfile(models.Model):
     def __str__(self):
         return '%s %s %s %s' % (self.user, self.twitter_handle, self.decibel, self.escrow)
 
-def rank(self):
+    def rank(self):
 
         if self.decibel <= 1.0:
             return "Whisperer"
