@@ -1074,7 +1074,7 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
 .input-nm:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
-label 				 {
+label.nm-lb 				 {
   color:#999;
   font-size:14px;
   font-weight:normal;
