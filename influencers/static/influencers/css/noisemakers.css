@@ -1088,7 +1088,7 @@ label.nm-lb 				 {
 }
 
 /* active state */
-.input-nm:focus ~ label, input:valid ~ label 		{
+.input-nm:focus label.nm-lb, input:valid  label.nm-lb 		{
   top:-20px;
   font-size:14px;
   color: #999;
