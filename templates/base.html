@@ -16,6 +16,22 @@
 <link rel="stylesheet" href="{% static 'django_modalview/css/modal.css' %}" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
  <script type="text/javascript" src="{% static 'influencers/js/jquery.min.js' %}"></script>
+    <script type="text/javascript">
+	(function ($) {
+  $(document).ready(function(){
+	$(".sticky-header").hide();
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('.sticky-header').fadeIn(500);
+			} else {
+				$('.sticky-header').fadeOut(500);
+			}
+		});
+	});
+});
+  }(jQuery));
+	</script>
 
 
 <script>window.twttr = (function(d, s, id) {
@@ -131,22 +147,7 @@
 </div>
 
 
-   <script type="text/javascript">
-	(function ($) {
-  $(document).ready(function(){
-	$(".sticky-header").hide();
-	$(function () {
-		$(window).scroll(function () {
-			if ($(this).scrollTop() > 100) {
-				$('.sticky-header').fadeIn(500);
-			} else {
-				$('.sticky-header').fadeOut(500);
-			}
-		});
-	});
-});
-  }(jQuery));
-	</script>
+
 <script src="{% static 'influencers/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript">
     $(window).load(function(){
