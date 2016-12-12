@@ -1074,7 +1074,7 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
 .input-nm:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
-label.nm-lb 				 {
+.nm_lb				 {
   color:#999;
   font-size:14px;
   font-weight:normal;
@@ -1088,7 +1088,7 @@ label.nm-lb 				 {
 }
 
 /* active state */
-.input-nm:focus label.nm-lb, input:valid  label.nm-lb 		{
+input:focus .nm_lb, input:valid ~ .nm_lb 		{
   top:-20px;
   font-size:14px;
   color: #999;
@@ -1155,13 +1155,7 @@ label.nm-lb 				 {
     width: 100%;
     padding: 10px;
 }
-.nm-input:invalid{
-    border-right: none;
-    border-left: none;
-    border-top: none;
-    box-shadow: none;
-    background: transparent;
-}
+
 .nm-tg{
     color: #101010;
     text-transform: uppercase;

@@ -6,12 +6,14 @@
 
     <style>
 
+
     body {
 
      font-family: 'Roboto', sans-serif;
 }
     .navbar-header {
     padding-top: 15px;
+
 }
     </style>
 
@@ -19,7 +21,9 @@
 {% endblock %}
 {% block global_header %}
 
-  <nav class="sticky-header">
+
+    <section class="landing stack">
+  <nav class="sticky-header ">
       <div class="container-fluid">
       <ul class="list-unstyled navbar-right hidden-lg  hidden-md">
 
@@ -71,8 +75,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <section class="landing stack">
-
     <!-- Static navbar -->
     <nav class="navbar navbar-default hidden-sm hidden-xs navbar-static-top">
       <div class="container-fluid">
@@ -304,7 +306,7 @@
         <input class="input-nm"  id="id_email" maxlength="150" name="email" placeholder="" type="email" required />
 
       <span class="bar"></span>
-        <label class="nm-lb" for="id_email">Email</label>
+        <label class="nm_lb"  for="id_email">Email</label>
 
 
         </div>
@@ -315,7 +317,7 @@
         <input class="input-nm" id="id_twitter_handle" name="twitter_handle" type="text" placeholder="" required />
 
       <span class="bar"></span>
-        <label class="nm-lb" for="id_twitter_handle">Twitter handle</label>
+        <label class="nm_lb" for="id_twitter_handle">Twitter handle</label>
 
         </div>
   <p><input type="submit" class="btn nm-btn-primary" value="Request Invite" style="width: 100%;" /></p>
