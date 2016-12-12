@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{% static 'influencers/css/bootstrap.min.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'django_modalview/css/modal.css' %}" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+ <script type="text/javascript" src="{% static 'influencers/js/jquery.min.js' %}"></script>
 
 <script src="{% static 'influencers/js/bootstrap-slider.js' %}"></script>
 <script>window.twttr = (function(d, s, id) {
@@ -129,7 +130,23 @@
 {% endblock %}
 </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+   <script type="text/javascript">
+	(function ($) {
+  $(document).ready(function(){
+	$(".sticky-header").hide();
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('.sticky-header').fadeIn(500);
+			} else {
+				$('.sticky-header').fadeOut(500);
+			}
+		});
+	});
+});
+  }(jQuery));
+	</script>
 <script src="{% static 'influencers/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript">
     $(window).load(function(){
@@ -215,22 +232,7 @@ function stickIt() {
 
 }
 </script>
-    <script type="text/javascript">
-	(function ($) {
-  $(document).ready(function(){
-	$(".sticky-header").hide();
-	$(function () {
-		$(window).scroll(function () {
-			if ($(this).scrollTop() > 100) {
-				$('.sticky-header').fadeIn(500);
-			} else {
-				$('.sticky-header').fadeOut(500);
-			}
-		});
-	});
-});
-  }(jQuery));
-	</script>
+
 
   <script src="{% static 'influencers/js/jquery.smooth-scroll.js' %}"></script>
   <script>
