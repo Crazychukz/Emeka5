@@ -851,15 +851,10 @@ text-transform: uppercase;
     .nm-main-logo{
         margin-left: 0;
     }
-    .carousel {
- height: 400px;
-  margin-bottom: 5px;
-        overflow: hidden;
-}
-    .carousel .item {
-    height: 400px;
-        overflow: hidden;
+    .landing {
+        background:#ffffff;
     }
+
     .nm-value-wrapper{
     padding-top: 0px;
 }
@@ -892,20 +887,7 @@ text-transform: uppercase;
     background-image: none;
     box-shadow: none;
 }
-/* Carousel base class */
-.carousel {
-  min-height: 600px;
-  margin-bottom: 60px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;}
 
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  min-height:600px;
-background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
-}
 .carousel-inner > .item > img {
   position: absolute;
   top: 0;
@@ -940,4 +922,249 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
 .nm-carry{
     position: relative;
     z-index: 88;
+}
+.nm-carry2{
+    position: relative;
+    width: 100%;
+          background: #fff;
+    padding: 10px;
+}
+.landing-image-wrapper-mobile{
+    position: absolute;
+    height: 400px;
+    top: 0;
+}
+.no-padding{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.nm-top-2{
+
+}
+.nm-mobile-stack{
+    width: 100%;
+    position: relative;
+
+    height: auto;
+
+    top: 0;
+
+}
+@media (max-width: 767px) {
+    .nm-main-logo .nm-logo > img{
+        width: 180px;
+        height: auto;
+    }
+ /* Carousel base class */
+.carousel {
+
+    height: 200px;
+  margin-bottom: 0;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+
+    height: 200px;
+background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
+}
+}
+
+/* tablets */
+@media (max-width: 991px) and (min-width: 768px) {
+    /* Carousel base class */
+    .carousel {
+        min-height: 400px;
+
+        height: auto;
+
+        margin-bottom: 0;
+    }
+
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+        z-index: 10;
+    }
+
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        min-height: 400px;
+
+        height: auto;
+        background: linear-gradient(to right, #29fd5e 0, #2dfffd 100%);
+    }
+}
+/* laptops */
+@media (max-width: 1023px) and (min-width: 992px) {
+    /* Carousel base class */
+    .carousel {
+        min-height: 500px;
+        height: auto;
+
+        margin-bottom: 0;
+    }
+
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+        z-index: 10;
+    }
+
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        min-height: 500px;
+        height: auto;
+        background: linear-gradient(to right, #29fd5e 0, #2dfffd 100%);
+    }
+}
+
+/* desktops */
+@media (min-width: 1024px) {
+    /* Carousel base class */
+    .carousel {
+        min-height: 700px;
+        height: auto;
+
+        margin-bottom: 0;
+    }
+
+    /* Since positioning the image, we need to help out the caption */
+    .carousel-caption {
+        z-index: 10;
+    }
+
+    /* Declare heights because of positioning of img element */
+    .carousel .item {
+        min-height: 700px;
+        height: auto;
+        background: linear-gradient(to right, #29fd5e 0, #2dfffd 100%);
+    }
+}
+.nm-value-2{
+    font-size: 28px;
+    color: #04bfad;
+    font-family: 'Oswald', serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+.nm-btn-primary{
+    color: #ffffff;
+    background-color: #04bfad;
+}
+.nm-btn-primary:hover{
+    color: #ffffff;
+    background-color: #079e8f;
+}
+/* form starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+  margin-bottom:45px;
+}
+.input-nm 				{
+  font-size:18px;
+  padding:6px 6px 6px 5px;
+  display:block;
+  width:100%;
+  border:none;
+    color: #757575;
+  border-bottom:1px solid #757575;
+}
+.input-nm:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999;
+  font-size:14px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+.input-nm:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color: #999;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; margin-top: 2px; display:block; width:100%; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background: #04bfad;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:0;
+}
+.bar:after {
+  right:0;
+}
+
+/* active state */
+.input-nm:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:100%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100%;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+.input-nm:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+
+.nm-invite-wrapper-2{
+    width: 100%;
+    padding: 10px;
+}
+.nm-input:invalid{
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    box-shadow: none;
+    background: transparent;
+}
+.nm-tg{
+    color: #101010;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
 }
