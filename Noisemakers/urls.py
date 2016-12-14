@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from influencers.views import HomeViews
+from django.contrib.staticfiles import views
 from django.conf.urls.static import static
 from django.contrib import admin
 from . import settings
@@ -25,5 +27,10 @@ urlpatterns = [
     url(r'^$', HomeViews.as_view(), name='index'),
     url(r'^influencers/', include('influencers.urls')),
     url(r'^noisemaker_invite/', include('noisemaker_invite.urls'), name='noisemaker_invite'),
-]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+urlpatterns += staticfiles_urlpatterns()
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^static/(?P<path>.*)$', views.serve),
+    ]
  
