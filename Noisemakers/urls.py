@@ -25,5 +25,4 @@ urlpatterns = [
     url(r'^influencers/', include('influencers.urls')),
     url(r'^noisemaker_invite/', include('noisemaker_invite.urls'), name='noisemaker_invite'),
 ]
- if settings.DEBUG:
-   urlpatterns += staticfiles_urlpatterns()
+ 
