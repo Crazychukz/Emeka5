@@ -64,13 +64,13 @@ class NoisemakerProfile(models.Model):
 
     def rank(self):
 
-        if self.decibel <= 1.0:
+        if self.decibel <= 2.5:
             return "Whisperer"
-        elif self.decibel <= 2.0:
+        elif self.decibel <= 7.5:
             return "Jabber"
-        elif self.decibel <= 4.0 :
+        elif self.decibel <= 14.5 :
             return "Hypeman"
-        elif self.decibel <= 5.0:
+        elif self.decibel <= 29.5:
             return "Preacher"
         else:
             return "Town Crier"

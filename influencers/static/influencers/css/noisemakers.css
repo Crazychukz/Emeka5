@@ -1030,3 +1030,6 @@ input:focus .nm_lb, input:valid ~ .nm_lb 		{
     font-family: 'Lato', sans-serif;
     font-weight: 100;
 }
+.footer-list a{
+    color: #0f0f0f;
+}

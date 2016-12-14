@@ -22,10 +22,8 @@ urlpatterns = [
     url(r'^recover/(?P<signature>.+)/$', views.recover_done,name='password_reset_sent'),
     url(r'^recover/$', views.recover, name='password_reset_recover'),
     url(r'^reset/done/$', views.reset_done, name='password_reset_done'),
-    url(r'^reset/(?P<token>[\w:-]+)/$', views.reset,
-        name='password_reset_reset'),
+    url(r'^reset/(?P<token>[\w:-]+)/$', views.reset,name='password_reset_reset'),
     url(r'^faq/', views.Faq, name='faq'),
     url(r'^brands/', views.Brand, name='brands'),
-
-
+    url(r'^influencers/', views.Influencers, name='influencers'),
 ]

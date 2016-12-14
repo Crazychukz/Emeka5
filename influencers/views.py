@@ -93,6 +93,8 @@ def Faq(request):
     return render(request, 'influencers/faq.html')
 def Brand(request):
     return render(request, 'influencers/brand.html')
+def Influencers(request):
+    return render(request, 'influencers/influencers.html')
 
 
 class SignUpView(View):
