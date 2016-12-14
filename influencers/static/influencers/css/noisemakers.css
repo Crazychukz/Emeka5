@@ -220,6 +220,12 @@ ul.footer-list-left li{
 
     margin-right: 8px;
 }
+ .nm-ex{
+     width: 80%;
+     margin: 0 auto;
+     padding: 8px;
+     text-align: center;
+ }
 .lead{
     font-size: 20px;
 }
@@ -871,6 +877,15 @@ ul.nm-ul li{
     .nm-main-logo .nm-logo > img{
         width: 180px;
         height: auto;
+    }
+    .nm-ex{
+     width: 100%;
+     margin: 0 auto;
+     padding: 8px;
+     text-align: justify;
+ }
+    .lead{
+        font-size: 16px;
     }
     .carousel {
         height: 200px;
