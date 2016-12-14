@@ -148,11 +148,11 @@ DATABASES['default'].update(db_from_env)
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = '/static/'
 SITE_ID = 1
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/Users/CrazychukZ/Desktop/Emeka5/influencers/static/',
+    '/Users/CrazychukZ/Desktop/Emeka5/influencers/static/influencers/',
 ]
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
