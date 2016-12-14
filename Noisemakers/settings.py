@@ -152,7 +152,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 SITE_ID = 1
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-  
+    '/influencers/static/',
 ]
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
