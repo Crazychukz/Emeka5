@@ -207,9 +207,18 @@ class CampaignForm(forms.Form):
     )
     PREFERENCES = (
         ('All' , 'All'),
-        ('Fashion and Lifestyle', 'Fashion and Lifestyle'),
-        ('Sports, Politics and Education', 'Sports, Politics and Education'),
-        ('Technology', 'Technology'),
+        ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
+        ('Internet,Technology,Computer & Software', 'Internet,Technology,Computer & Software'),
+        ('Telecommunications,Publishing,News media', 'Telecommunications,Publishing,News media'),
+        ('Health care,Food & Fruit,Agriculture', 'Health care,Food & Fruit,Agriculture'),
+        ('Construction & Real Estate ,Hospitality & Travel', 'Construction & Real Estate ,Hospitality & Travel'),
+        ('Women/Girl Advocacy', 'Women/Girl Advocacy'),
+        ('Sports', 'Sports'),
+        ('Defense & Arms,Public Administration,Politics', 'Defense & Arms,Public Administration,Politics'),
+        ('Transportation Services,Automotive', 'Transportation Services,Automotive'),
+        ('Financial services', 'Financial services'),
+        ('Education', 'Education'),
+        ('Aerospace', 'Aerospace'),
 
     )
     base_pay = forms.CharField(widget=forms.TextInput)
@@ -219,7 +228,7 @@ class CampaignForm(forms.Form):
     tweet = forms.CharField(required=False)
     hash_tag = forms.CharField(required=False)
     follow_handle = forms.CharField(required=False)
-    preference = forms.CharField(widget=forms.CheckboxSelectMultiple(choices=PREFERENCES), label=_("preference"))
+    preference = forms.CharField(widget=forms.SelectMultiple(choices=PREFERENCES), label=_("preference"))
 
     def clean_url(self):
         url = self.cleaned_data["url"]
@@ -255,10 +264,18 @@ class CampaignForm(forms.Form):
 
 class HandleForm(forms.Form):
     PREFERENCES = (
-
-        ('Fashion and Lifestyle', 'Fashion and Lifestyle'),
-        ('Sports, Politics and Education', 'Sports, Politics and Education'),
-        ('Technology', 'Technology'),
+        ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
+        ('Internet,Technology,Computer & Software', 'Internet,Technology,Computer & Software'),
+        ('Telecommunications,Publishing,News media', 'Telecommunications,Publishing,News media'),
+        ('Health care,Food & Fruit,Agriculture', 'Health care,Food & Fruit,Agriculture'),
+        ('Construction & Real Estate ,Hospitality & Travel', 'Construction & Real Estate ,Hospitality & Travel'),
+        ('Women/Girl Advocacy', 'Women/Girl Advocacy'),
+        ('Sports', 'Sports'),
+        ('Defense & Arms,Public Administration,Politics', 'Defense & Arms,Public Administration,Politics'),
+        ('Transportation Services,Automotive', 'Transportation Services,Automotive'),
+        ('Financial services', 'Financial services'),
+        ('Education', 'Education'),
+        ('Aerospace', 'Aerospace'),
 
     )
 
@@ -266,7 +283,7 @@ class HandleForm(forms.Form):
                                 max_length=30,
                                 widget=forms.TextInput(attrs=attrs_dict),
                                 error_messages={'invalid': _("This value must contain only letters, numbers and underscores.")})
-    preference = forms.CharField(widget=forms.CheckboxSelectMultiple(choices=PREFERENCES), required=True, label=_("preference"))
+    preference = forms.CharField(widget=forms.SelectMultiple(choices=PREFERENCES), required=True, label=_("preference"))
 
 
 

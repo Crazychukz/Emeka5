@@ -99,7 +99,7 @@ body {
  * Affix and center
  */
 .mastfoot {
-    position: fixed;
+    position: absolute;
     width: 100%;
     bottom: 0;
   }
@@ -110,7 +110,7 @@ body {
     top: 0;
   }
   .mastfoot {
-    position: fixed;
+    position: absolute;
     bottom: 0;
   }
   /* Start the vertical centering */

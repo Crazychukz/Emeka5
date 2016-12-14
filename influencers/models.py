@@ -33,10 +33,18 @@ class NoisemakerProfile(models.Model):
         ('Zenith International Bank Ltd', 'Zenith International Bank Ltd'),
     )
     PREFERENCES = (
-        ('Fashion and Lifestyle', 'Fashion and Lifestyle'),
-        ('Sports, Politics and Education', 'Sports, Politics and Education'),
-        ('Technology', 'Technology'),
-        ('All', 'All'),
+        ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
+        ('Internet,Technology,Computer & Software', 'Internet,Technology,Computer & Software'),
+        ('Telecommunications,Publishing,News media', 'Telecommunications,Publishing,News media'),
+        ('Health care,Food & Fruit,Agriculture', 'Health care,Food & Fruit,Agriculture'),
+        ('Construction & Real Estate ,Hospitality & Travel', 'Construction & Real Estate ,Hospitality & Travel'),
+        ('Women/Girl Advocacy', 'Women/Girl Advocacy'),
+        ('Sports', 'Sports'),
+        ('Defense & Arms,Public Administration,Politics', 'Defense & Arms,Public Administration,Politics'),
+        ('Transportation Services,Automotive', 'Transportation Services,Automotive'),
+        ('Financial services', 'Financial services'),
+        ('Education', 'Education'),
+        ('Aerospace', 'Aerospace'),
 
     )
     user = models.OneToOneField(User,on_delete=models.CASCADE,verbose_name=('username'), primary_key=True,)
@@ -88,10 +96,18 @@ class Campaigns(models.Model):
     )
     PREFERENCES = (
         ('All' , 'All'),
-        ('Fashion and Lifestyle', 'Fashion and Lifestyle'),
-        ('Sports, Politics and Education', 'Sports, Politics and Education'),
-        ('Technology', 'Technology'),
-
+        ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
+        ('Internet,Technology,Computer & Software', 'Internet,Technology,Computer & Software'),
+        ('Telecommunications,Publishing,News media', 'Telecommunications,Publishing,News media'),
+        ('Health care,Food & Fruit,Agriculture', 'Health care,Food & Fruit,Agriculture'),
+        ('Construction & Real Estate ,Hospitality & Travel', 'Construction & Real Estate ,Hospitality & Travel'),
+        ('Women/Girl Advocacy', 'Women/Girl Advocacy'),
+        ('Sports', 'Sports'),
+        ('Defense & Arms,Public Administration,Politics', 'Defense & Arms,Public Administration,Politics'),
+        ('Transportation Services,Automotive', 'Transportation Services,Automotive'),
+        ('Financial services', 'Financial services'),
+        ('Education', 'Education'),
+        ('Aerospace', 'Aerospace'),
 
     )
     campaign_id = models.AutoField(primary_key=True)

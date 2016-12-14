@@ -2,6 +2,8 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block inline_style %}
+    {% block special %}
+{% endblock %}
     <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();

@@ -1,5 +1,9 @@
 {% extends 'influencers/noisemakerz_base.html' %}
 {% load staticfiles %}
+{% block special %}
+     <link rel="stylesheet" href="{% static 'influencers/css/bootstrap-select.min.css' %}">
+    <script src="{% static 'influencers/js/bootstrap-select.min.js' %}"></script>
+{% endblock %}
 
 {% block page_title %}
     Your Campaigns
@@ -93,52 +97,33 @@
         </div>
 <fieldset>
     <legend>Preference </legend>
+    <span>*Set your campaign preference</span><br>
+    <select multiple="multiple" id="id_preference" name="preference" class=" selectpicker" required>
 
-    <div class="nm-radio">
-        <ul class="nm-ul list-unstyled">
-            <li>
-        <div class="nm-radio-info">
-            <input id="id_preference_0" name="preference" type="checkbox" value="All" />
-            <label for="id_preference_0">All</label>
-
-
-        </div>
-                </li>
-            <li>
-        <div class="nm-radio-info">
-            <input id="id_preference_1" name="preference" type="checkbox" value="Fashion and Lifestyle" />
-              <label for="id_preference_1">  Fashion and Lifestyle
-              </label>
-        </div>
-                </li>
-            <li>
-        <div class="nm-radio-info">
-            <input id="id_preference_2" name="preference" type="checkbox" value="Sports, Politics and Education" />
-               <label for="id_preference_2"> Sports, Politics and Education</label>
-        </div></li>
-            <li>
-        <div class="nm-radio-info">
-            <input id="id_preference_3" name="preference" type="checkbox" value="Technology" />
-             <label for="id_preference_3">   Technology</label>
-
-        </div></li>
-            </ul>
-
-    </div>
+<option value="All">All</option>
+<option value="Entertainment,Fashion,Lifestyle">Entertainment,Fashion,Lifestyle</option>
+<option value="Internet,Technology,Computer &amp; Software">Internet,Technology,Computer &amp; Software</option>
+<option value="Telecommunications,Publishing,News media">Telecommunications,Publishing,News media</option>
+<option value="Health care,Food &amp; Fruit,Agriculture">Health care,Food &amp; Fruit,Agriculture</option>
+<option value="Construction &amp; Real Estate ,Hospitality &amp; Travel">Construction &amp; Real Estate ,Hospitality &amp; Travel</option>
+<option value="Women/Girl Advocacy">Women/Girl Advocacy</option>
+<option value="Sports">Sports</option>
+<option value="Defense &amp; Arms,Public Administration,Politics">Defense &amp; Arms,Public Administration,Politics</option>
+<option value="Transportation Services,Automotive">Transportation Services,Automotive</option>
+<option value="Financial services">Financial services</option>
+<option value="Education">Education</option>
+<option value="Aerospace">Aerospace</option>
 
 
-
-
+</select>
 
 
 </fieldset>
          <div class="form-group">
-<label for="id_decibel">Decibel:<output for="fader" id="Db" >50</output></label>
-             <a href="#" data-toggle="tooltip"  title="This determines your campaign reach and the
-             number of noisemarkers capable of acting on it">
+             <label for="id_decibel">Decibel:<output for="fader" id="Db" >50</output></label>
+             <a href="#" data-toggle="tooltip"  title="This determines your campaign reach and the number of noisemarkers capable of acting on it">
                  <i class="nm-info fa  fa-question-circle-o fa-lg"></i></a>
-        <input id="id_decibel" name="decibel" type="range"
-               oninput="outputUpdate(value)"   min="0" max="100"
+             <input id="id_decibel" name="decibel" type="range" oninput="outputUpdate(value)"   min="10" max="1000"
                style="border:0;  color:#f6931f; font-weight:bold;"
                 class="decibels" required data-rangeslider />
     </div>
