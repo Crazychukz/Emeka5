@@ -152,7 +152,6 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-	'/admin/static/',
 ]
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
