@@ -73,7 +73,7 @@
                     <ul class=" footer-list-left list-unstyled">
                         <li><i class="fa fa-twitter "></i> </li>
                         <li><i class="fa fa-facebook "></i> </li>
-                        <li><i class="fa fa-instagram "></i> </li>
+                        <li><i class="fa fa-instagram"></i> </li>
                     </ul>
                 </div>
             </div>
@@ -83,13 +83,12 @@
                     <ul class=" footer-list list-unstyled">
                         <li><a  href="{% url 'faq' %}" >FAQs</a></li>
                         <li><a href="{% url 'brands' %}"> Business</a></li>
-                        <li><a href=""> Influencers</a></li>
+                        <li><a href="{% url 'influencers' %}"> Influencers</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <div class="footer-logo clearfix" style="width: auto;float: right;
-                  ">
-                    <img src="{% static 'influencers/images/Surkreo.png' %}">
+                    <div class="footer-logo clearfix">
+                    <img style="padding: 5px;" src="{% static 'influencers/images/Surkreo.png' %}">
                         <br>
                         &copy;{% now "Y" %} &nbsp; Surkreo
                     </div>

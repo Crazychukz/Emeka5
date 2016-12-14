@@ -216,8 +216,12 @@ ul.footer-list-left{
 }
 ul.footer-list-left li{
     display: inline-block;
-    font-size: 16px;
-    margin-right: 5px;
+    font-size: 18px;
+
+    margin-right: 8px;
+}
+.lead{
+    font-size: 20px;
 }
 .features-wrapper{
     width: 100%;
@@ -585,8 +589,8 @@ ul.navbar-right{
 .nm-invite-wrapper .nm-nomargin{
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 700;
-    letter-spacing: 5px;
+    font-weight: 500;
+    letter-spacing: 1px;
     font-family: 'Oswald', serif;
 }
 @media (min-width: 992px) {
@@ -876,6 +880,11 @@ ul.nm-ul li{
         height: 200px;
         background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
     }
+     .footer-logo{
+        width: 120px;
+         margin: 0 auto;
+        padding-bottom: 5px;
+    }
 }
 
 
@@ -906,6 +915,11 @@ ul.nm-ul li{
         height: auto;
         background: linear-gradient(to right, #29fd5e 0, #2dfffd 100%);
     }
+     .footer-logo{
+        width: 120px;
+        float: right;
+        padding-bottom: 5px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -918,6 +932,11 @@ ul.nm-ul li{
         min-height: 700px;
         height: auto;
         background: linear-gradient(to right, #29fd5e 0, #2dfffd 100%);
+    }
+    .footer-logo{
+        width: 120px;
+        float: right;
+        padding-bottom: 5px;
     }
 }
 .nm-value-2{
