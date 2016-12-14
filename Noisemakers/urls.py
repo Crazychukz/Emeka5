@@ -28,9 +28,4 @@ urlpatterns = [
     url(r'^influencers/', include('influencers.urls')),
     url(r'^noisemaker_invite/', include('noisemaker_invite.urls'), name='noisemaker_invite'),
 ]
-urlpatterns += staticfiles_urlpatterns()
-if settings.DEBUG:
-    urlpatterns += [
-        url(r'^static/(?P<path>.*)$', views.serve),
-    ]
  
