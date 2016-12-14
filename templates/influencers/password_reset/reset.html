@@ -1,4 +1,6 @@
 
+
+
 {% extends 'base.html' %}
 {% load i18n %}
 {% load staticfiles %}
@@ -30,26 +32,44 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="nm-dash" style="border-radius: 6px; box-shadow: #728099 0 1px 5px 0; margin: 0 auto; padding: 20px">
-                <h1 class="text-center page-header">Password Reset</h1>
+                {% if invalid %}{% url "password_reset_recover" as recovery_url %}
+		<p>{% blocktrans %}Sorry, this password reset link is invalid. You can still <a href="{{ recovery_url }}">request a new one</a>.{% endblocktrans %}</p>
+	{% else %}
+                    <h1 class="text-center page-header" style="color: #079e8f;"><i class="fa fa-lock fa-2x"></i> </h1>
+		<p>{% blocktrans %}Hi, <strong>{{ username }}</strong>. Please choose your new password.{% endblocktrans %}</p>
                 <div class="">
-                    {% if form.errors %}
-                        <div class="alert alert-error">
-                        {% for error in form.non_field_errors %}
-                            {{ error }}
-                        {% endfor %}
-                    {%  endif %}
-                    <form method="post" action=".">
+                    <form method="post" action="{% url "password_reset_reset" token %}">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label for="id_email">Please enter your email</label>
-                            <input class="required form-control" placeholder="Email" id="id_email" maxlength=254" name="email"  type="email" required />
+                                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}
+                                    </strong>
+                                </div>
+    {% endfor %}
+{% endif %}
+                     <div class="form-group">
+                            <label for="id_password1"></label>
+                            <input class="required form-control" placeholder="New password" id="id_password1"  name="password1"  type="password" required />
                         </div>
-
+                     <div class="form-group">
+                            <label for="id_password2"></label>
+                            <input class="required form-control" placeholder="Confirm password" id="id_password2"  name="password2"  type="password" required />
+                        </div>
+                    {{ form.non_field_errors }}
 
                         <div class="form-group ">
                             <input type="submit" class="btn nm-btn-primary" value="Reset" />
                         </div>
                     </form>
+                {% endif %}
                     </div>
                 </div>
             </div>

@@ -29,7 +29,8 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="nm-dash" style="border-radius: 6px; box-shadow: #728099 0 1px 5px 0; margin: 0 auto; padding: 20px">
-                <h1 class="text-center page-header" style="color: #079e8f;"><i class="fa fa-lock fa-2x"></i> </h1>
+            <h1 class="text-center page-header" style="color: #079e8f;"><i class="fa fa-check fa-2x"></i> </h1>
+                <h5 class="text-center">Password reset successful, login below</h5>
                 <div class="">
                     {% if form.errors %}
                         <div class="alert alert-error">
@@ -54,8 +55,7 @@
                             <input type="hidden" name="next" value="{{ next }}" />
                         </div>
                     </form>
-                    <p>{% trans "Forgot password" %}? <a href="{% url 'password_reset_recover' %}">{% trans "Ask the class captain" %}</a>!</p>
-                    <p>{% trans "Not a Noisemaker" %}? <a href="{% url 'sign_up' %}">{% trans "Sign up" %}</a>!</p>
+                    <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Ask the class captain" %}</a>!</p>
                     </div>
                 </div>
             </div>

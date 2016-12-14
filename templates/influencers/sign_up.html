@@ -2,418 +2,111 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block inline_style %}
+    <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_3.css' %}">
     <style>
-
-    html,
-body {
-  height: 100%;
-        background-image: url('{% static "influencers/images/landing-bg-2.jpg" %}');;
-  background-color: #333;
-
-}
-body {
-  color: #000;
-
+    body {
+    color: #000;
     margin-bottom: 0;
-
+    background-image: url('{% static "influencers/images/landing-bg-2.jpg" %}');;
+    background-color: #333;
 }
-
-/* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
-
-  width: 80%;
-  height: 100%; /* For at least Firefox */
-  min-height: 100%;
-    padding-top: 80px;
-
-}
-.site-wrapper-inner {
-  display: table-cell;
-  vertical-align: top;
-}
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-/* Padding for spacing */
-.inner {
-  padding: 30px;
-}
-
-
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
-
-
-/*
- * Cover
- */
-
-.cover {
-  padding: 0 20px;
-}
-.cover .btn-lg {
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
-
-/*
- * Footer
- */
-
-.mastfoot {
-  color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
-}
-
-
-/*
- * Affix and center
- */
-
-@media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  /* Start the vertical centering */
-  .site-wrapper-inner {
-    vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
-}
-
-@media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
-  .cover-container {
-    width: 700px;
-
-  }
-}
-    .navbar-toggle{
-    margin-top: 12px;
-}
-
-.navbar-header{
-    text-align: center;
-
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #000;
-}
-.nm-hd-cam{
-    color: #000000;
-}
-.nm-cam-dt {
-    color: #000000;
-    font-weight: normal;
-}
-
-
-.main{
-    padding-top: 80px;
-}
-
-ul.navbar-right {
-    list-style: none;
-    margin-top: 0;
-    padding-top: 13px;
-}
-.dropdown-toggle img{
-    width: auto;
-    height: 30px;
-}
-.nm-user-wrapper{
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
-    background: #fff;
-    height: 100px;
-    width: 100%;
-display: block;
-position: relative;
-    padding: 10px;
-
-z-index: 100;
-
-     /* Use half of the width (120/2 = 60), to center the tooltip */
-
-}
-
-.sidebar{
-    padding-top: 80px;
-    background: transparent;
-    border-right: none;
-/*box-shadow: 0 1px 2px rgba(0,0,0,.1)*/
-}
-.nm-user-wrapper::after, .nm-user-wrapper::before{
-        top: 100%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-
-}
-.nm-user-wrapper::after{
-    border-color: rgba(255,255,255,0);
-border-top-color: #fff;
-border-width: 16px;
-left: 50%;
-margin-left: -16px;
-
-}
-.nm-user-wrapper::before {
-border-color: rgba(213,213,213,0);
-border-top-color: #ddd;
-border-width: 17px;
-left: 50%;
-margin-left: -17px;
-}
-.navbar-default{
-    background-color: #fff;
-    border-color: #e7e7e7;
-    border-width: 0 0 1px;
-}
-.navbar-brand .nm-logo > img{
-    width: auto;
-    height: 30px;
-}
-.nm-user-deets{
-    width: 100%;
-    margin-top: 20px;
-    position: relative;
-    min-height: 300px;
-    background-color: #fff;
-
-}
-.nm-user-deets-01{
-    border-bottom: 1px solid #ffffff;
-    min-height: 100px;
-    width: 100%;
-}
-.nm-user-deets-01, .nm-user-deets-02{
-    padding: 10px;
-}
-.nav-sidebar  a{
-    color: rgb(136, 153, 166);
-    font-size: 16px;
-}
-.nav-sidebar {
-    margin-right: 0;
-    margin-bottom: 20px;
-    margin-left: 0;
-}
-.nav > li > a:hover {
-    text-decoration: none;
-    background-color: transparent;
-}
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0;
-    margin: 8px 0 0;
-    font-size: 14px;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 4px;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-
-
-
-
     </style>
 {% endblock %}
 
 {% block content %}
-
-     <div class="sign" style="width: 100%; padding-top: 80px; margin: 0 auto;">
-      <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="sign" style="width: 100%; padding-top: 80px; margin: 0 auto;">
+     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-
-
-
-
-          <a class="navbar-brand " href="{% url 'index' %}">
-              <div class="nm-logo">
-              <img src="{% static "influencers/images/noisemaker-shade.svg" %}">
-                  </div>
+          <a style="width: 100%; margin: 0 auto;" class="navbar-brand " href="{% url 'index' %}">
+              <div class="nm-logo" style="width: 180px; margin: 0 auto;">
+                  <img style="margin: 0 auto;" src="{% static "influencers/images/noisemaker-shade.svg" %}" alt="Noisemakerz Logo">
+              </div>
           </a>
-
-
-            <ul class="   navbar-right  navbar-nav">
-          <li style="margin-right: 10px;">
-                  {% if user.is_authenticated %}
-                      <a class="" href="{% url 'auth_logout' %}"><span class="badge">{% trans "Log out" %}</span></a>
-                {% else %}
-                <a class="" data-toggle="modal" data-target="#myModal"><span class="badge"> {% trans "Log in" %}</span></a>
-                 {% endif %}
-
-              </li>
-      </ul>
-
       </div>
-    </nav>
+      </nav>
 
-      <div class="row">
-
-        <div class="col-md-6"></div>
-          <div class="col-md-6">
-
-<div class="nm-dash" style="border-radius: 6px; box-shadow: #728099 0 1px 5px 0; margin: 0 auto; padding: 20px">
-    <h1 class="page-header">Become A Noisemaker</h1>
-    <div class="">
-
-<form method="post" action=".">
-    {% csrf_token %}
-
-    <span>{{ form.email.errors.as_text }}</span>
-    <div class="form-group">
-{{ form.username.errors.as_text }}
-<label for="id_username"></label>
-
-
-    <input class="required form-control" placeholder="Username" id="id_username" maxlength="30" name="username"  type="text" required />
-</div>
-
-    <div class="form-group input-group">
-
-        <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
-
-        <label for="id_email"></label>
-        <input class="required form-control" placeholder="Email address"  id="id_email" maxlength="75" name="email" type="text" required />
-    </div>
-    <div class="form-group input-group">
-        <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
-        <label for="id_password1"></label>
-        <input class="required form-control" id="id_password1" name="password1" placeholder="Create password"  type="password" required />
-    </div>
-    {{ form.non_field_errors.as_text }}
-     <div class="form-group input-group">
-        <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
-        <label for="id_password2"></label>
-        <input class="required form-control" id="id_password2" placeholder="Confirm password" name="password2" type="password" required />
-    </div>
-    <div class="form-group ">
-
-
-        <input style="width: 100%;" class="btn btn-success"   type="submit" value="Sign up" />
-    </div>
-
-  </form></div>
-    </div>
-
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    <div class="modal-content" style="max-width: 300px;">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title text-center">Log in to Noisemaker</h3>
-        </div>
-        <div class="modal-body">
-<form method="post" action="{% url 'auth_login' %}">
-{% csrf_token %}
- <div class="form-group">
-      <P><label for="id_username"></label>
-<input id="id_username" type="text" name="username" maxlength="254" class="form-control" placeholder="username" required /></P>
-        </div>
-    <div class="form-group">
-      <P><label for="id_password"></label>
-<input id="id_password" type="password" name="password" maxlength="100" class="form-control" placeholder="password" required /></P>
-        </div>
-
-  <input type="submit" class="btn btn-success"  style="width: 100%" value="{% trans 'Log in' %}" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
-            <p> <a href="{% url 'auth_password_reset' %}">{% trans "Forget Password" %}?</a></p>
-          <p>{% trans "Not a Noisemaker" %}? <a href="{% url 'registration_register' %}">{% trans "Sign up" %}</a></p>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="nm-dash" style="border-radius: 6px; box-shadow: #728099 0 1px 5px 0; margin: 0 auto; padding: 20px">
+                    <h1 class="page-header">Become A Noisemaker</h1>
+                    <div class="">
+                        <form method="post" action=".">
+                            {% csrf_token %}
+                            <span>{{ form.email.errors.as_text }}</span>
+                            <div class="form-group">
+                                {{ form.username.errors.as_text }}
+                                <label for="id_username"></label>
+                                <input class="required form-control" placeholder="Username" id="id_username" maxlength="30" name="username"  type="text" required />
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
+                                <label for="id_email"></label>
+                                <input class="required form-control" placeholder="Email address"  id="id_email" maxlength="75" name="email" type="email" required />
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
+                                <label for="id_password1"></label>
+                                <input class="required form-control" id="id_password1" name="password1" placeholder="Create password"  type="password" required />
+                            </div>
+                            {{ form.non_field_errors.as_text }}
+                            <div class="form-group input-group">
+                                <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
+                                <label for="id_password2"></label>
+                                <input class="required form-control" id="id_password2" placeholder="Confirm password" name="password2" type="password" required />
+                            </div>
+                            <div class="form-group ">
+                                <input style="width: 100%;" class="btn nm-btn-primary"   type="submit" value="Sign up" />
+                            </div>
+                        </form>
+                        <p>{% trans "Already a Noisemaker" %}? <a class="" data-toggle="modal" style="cursor: pointer;" data-target="#myModal"><span class="badge"> {% trans "Log in" %}</span></a></p>
+                    </div>
                 </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        <div class="col-md-4"></div>
         </div>
-      </div>
-</div></div>
+    </div>
+
 {% endblock %}
 
 {% block gloal_footer %}
+   <div class="mastfoot" style=" margin:  0 auto;">
+        <div class="ft-logo" style="width: 100px; margin: 0 auto; padding: 4px;">
+            <img style="width: 90px; height: auto; margin: 0 auto;" src="{% static 'influencers/images/surkreo.svg' %}" alt="Surkreo">
+        </div>
+        <div class="inner text-center">&copy; {% now "Y" %} <a href="http:\\www.surkreo.com" target="_blank" > Surkreo </a>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 300px; margin: 0 auto;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title text-center">Log in to Noisemaker</h3>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'auth_login' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <P><label for="id_username"></label>
+                                <input id="id_username" type="text" name="username" maxlength="254" class="form-control" placeholder="username" required /></P>
+                        </div>
+                        <div class="form-group">
+                            <P><label for="id_password"></label>
+                                <input id="id_password" type="password" name="password" maxlength="100" class="form-control" placeholder="password" required /></P>
+                        </div>
+                        <input type="submit" class="btn btn-success"  style="width: 100%" value="{% trans 'Log in' %}" />
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    </form>
 
-     <div class="mastfoot" style=" margin:  0 auto;">
-            <div class="inner text-center">
-                &copy; {% now "Y" %} Noisemakerz
 
+                    <p>{% trans "Not a Noisemaker" %}? <a href="{% url 'registration_register' %}">{% trans "Sign up" %}</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
-          </div>
+        </div>
+    </div>
+
 {% endblock %}

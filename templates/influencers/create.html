@@ -133,11 +133,14 @@
 
 </fieldset>
          <div class="form-group">
-<label >Decibel:<output for="fader" id="Db" >50</output></label>
-        <input id="id_decibel" name="decibel" type="range" step="1"
-               oninput="outputUpdate(value)" value="50" min="0" max="100"
-               readonly style="border:0;  color:#f6931f; font-weight:bold;"
-                class="decibels" required />
+<label for="id_decibel">Decibel:<output for="fader" id="Db" >50</output></label>
+             <a href="#" data-toggle="tooltip"  title="This determines your campaign reach and the
+             number of noisemarkers capable of acting on it">
+                 <i class="nm-info fa  fa-question-circle-o fa-lg"></i></a>
+        <input id="id_decibel" name="decibel" type="range"
+               oninput="outputUpdate(value)"   min="0" max="100"
+               style="border:0;  color:#f6931f; font-weight:bold;"
+                class="decibels" required data-rangeslider />
     </div>
 <div style="padding: 10px; padding-left: 0">
         <p>Campaign Cost:&nbsp;<span class="label label-default">&#8358;<span id="sum">0</span> </span></p>
@@ -237,15 +240,16 @@ Follow @{{ objects.follow_handle }}</a>
 
 {% endblock %}
 {% block gloal_footer %}
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 function outputUpdate(db) {
 	document.querySelector('#Db').value = db;
 }
 </script>
-
+<script>
+function showVal(newVal){
+  document.getElementById("Db").innerHTML=newVal;
+}
+</script>
 <script>
  $(document).ready(function() {
 

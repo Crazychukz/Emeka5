@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Noisemakerz - Brands" %}{% endblock %}
+{% load staticfiles %}
+{% block inline_style %}
+    <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_3.css' %}">
+    <style>
+    .panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+    .panel{
+        border-radius: 0;
+    }
+    .panel-group .panel + .panel {
+    margin-top: 0;
+}
+    .mastfoot {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+    @media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: absolute;
+    top: 0;
+  }
+  .mastfoot {
+    position: absolute;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+   body {
+          font-family: 'Roboto', sans-serif;
+       height: 100%;
+       margin-bottom: 200px;
+
+    color: #000;
+
+    background-color: #eeeeee;
+}
+    .nm-bg-2{
+        position: absolute;
+        height: 300px;
+    background-color: #079e8f;
+        z-index: -1;
+        top: 0;
+    }
+    .nm-multi{
+        width: 100%;
+        background-color: #ffffff;
+        margin-top: 50px;
+        min-height: 500px;
+        padding: 10px;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+     <div class="sign" style="width: 100%; padding-top: 80px; margin: 0 auto;">
+      <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <a  class="navbar-brand " href="{% url 'index' %}">
+              <div class="nm-logo" >
+                  <img  src="{% static "influencers/images/noisemaker-shade.svg" %}" alt="Noisemakerz Logo">
+              </div>
+          </a>
+      </div>
+      </nav>
+         <div class="container">
+         <div class="row">
+             <div class="col-sm-12">
+                 <div style="color: #ffffff" class="navbar-left list-unstyled">
+                     <h4>
+                         Brand
+                     </h4>
+                 </div>
+             </div>
+         </div></div>
+
+         <div class="row">
+             <div class="col-xs-12 nm-bg-2"></div>
+         </div>
+    <div class="row">
+        <div class="col-md-2 col-xs-12"></div>
+        <div class="col-md-8 col-xs-12 no-padding">
+
+            <div class="nm-multi">
+                <h2 class="page-header text-center">Brand</h2><br>
+                <article>
+                    <p>
+                        Brands are constantly looking to partner with influencers who can help them communicate with consumers
+                        in an authentic way. Noisemakerz creates this connection,
+                        putting you in front of hundreds of top brands who are eager to tap into the power of your credibility.
+                    </p>
+                </article>
+                <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Noisemakerz for businesses</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">
+          <p>
+              Your marketing goals demand modern campaigns for today’s socially-inspired consumers — proven
+              to increase brand affinity, buzz,
+              engagement and sales. With noisemakerz, you can deliver it fast and continue being your client’s hero.
+          </p>
+          <p>
+              Locating, accessing and empowering the right social influencers and content isn’t easy.
+              Noisemakerz solves that problem for you and your clients. Our platform reduces the heavy
+              lifting by identifying the right social influencers, connecting them to your client’s brand or products and inspiring them
+              to engage and grow awareness. We make earned media and social influencer campaigns your client’s best asset.
+          </p>
+          <p>
+              Noisemakerz accelerates successful digital marketing for today’s leading enterprises and brands. Traditional marketing techniques are diminishing in value. Converting today’s socially-driven consumer requires modern techniques that rely on authentic influence. Experience today’s art and science of digital marketing — targeting and converting modern consumers. Our end-to-end platform provides powerfully simplistic tools that give you the reach and influence over new audiences. Experience an increase in brand affinity, buzz, loyalty, sales, and hyper-active fan growth.
+<strong>Lets begin that ROI winning campaign.</strong>
+
+          </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+            </div>
+        </div>
+
+            <div class="col-md-2 col-xs-12"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block gloal_footer %}
+    <div class="mastfoot" style=" margin:  0 auto;">
+        <div class="ft-logo" style="width: 100px; margin: 0 auto; padding: 4px;">
+            <img style="width: 90px; height: auto; margin: 0 auto;" src="{% static 'influencers/images/surkreo-dark.svg' %}" alt="Surkreo">
+        </div>
+        <div class="inner text-center">&copy; {% now "Y" %} <a href="http:\\www.surkreo.com" target="_blank" > Surkreo </a>
+        </div>
+    </div>
+
+{% endblock %}

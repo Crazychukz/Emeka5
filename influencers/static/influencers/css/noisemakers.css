@@ -1,10 +1,5 @@
-
-/**
-index page style **/
 a:hover{
     text-decoration: none;
-
-
 }
 html {
   position: relative;
@@ -14,7 +9,7 @@ body{
     margin-bottom: 200px;
     margin-left: 0;
     margin-top: 0;
-
+    font-family: 'Roboto', sans-serif;
     margin-right: 0;
 }
 .global-wrapper{
@@ -25,7 +20,6 @@ body{
 }
 .landing{
     background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
-
     background-repeat: repeat;
     background-attachment: scroll;
     background-position: 0% 0%;
@@ -40,38 +34,33 @@ body{
     z-index: 2;
     cursor: default;
 }
- .sticky-header .header-title, .landing .stack-header .header-title{
-     position: relative;
+.sticky-header .header-title, .landing .stack-header .header-title{
+    position: relative;
     background-size: 48px 48px;
-     font-size: 24px;
+    font-size: 24px;
     padding-left: 0;
     height: 48px;
     box-sizing: border-box;
 }
- .navbar-right .header-title{
-     background-color: #04bfad;
-     border-radius: 2px;
- }
- .stack-header .navbar-right{
+.navbar-right .header-title{
+    background-color: #04bfad;
+    border-radius: 2px;
+}
+.stack-header .navbar-right{
      margin-right: 0;
      line-height: 48px;
      float: right;
      height: 48px;
-
- }
-
-
+}
 .header-title > img {
     height: 48px;
     width: auto;
-
 }
 .stack {
     min-height: 500px;
     position: relative;
     width: 100%;
     height: auto;
-
 }
 .stack.how-it-works{
     background-color: #eceff1;
@@ -95,20 +84,15 @@ h1{
 }
 .first-stack{
     height: 700px;
-
-
-
 }
 .stack-1 .header-title,.stack-2 .header-title{
     padding-left: 72px;
     font-weight: 400;
     max-width: 1216px;
-
     font-size: 18px;
     line-height: 56px;
     text-transform: uppercase;
     margin: 0 auto;
-
 }
 .stack-3 .header-title{
     padding-left: 72px;
@@ -120,34 +104,21 @@ h1{
     margin: 0 auto;
 
 }
-.landing .header-title{
-
-
-}
 .stack-2 .header-title{
     color: #ffffff;
 }
 .stack-1{
     background-color: #eceff1;
 }
-
-.first-stack-wrapper{
-
-
-
-}
-
 .landing-image-wrapper > img{
     height: auto;
     width: 100%;
-
 }
 .value-prop{
     padding-top: 20px;
-     font-size: 26px;
+    font-size: 26px;
     text-transform: uppercase;
     text-shadow: #000 2px 2px 15px;
-
 }
 .strong{
     font-size: large;
@@ -157,8 +128,10 @@ h1{
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
-.shade{background:rgba(0,0,0,.75);
-height: auto;}
+.shade{
+    background:rgba(0,0,0,.75);
+    height: auto;
+}
 .sticky-header{
     width: 100%;
     position: fixed;
@@ -170,22 +143,17 @@ height: auto;}
 }
 .stack-2{
     background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
-
-
     cursor: pointer;
-
 }
 .stack-1.cloned{
     position: fixed;
     top: auto;
     bottom: 0;
-
     height: 56px;
     transform: translateY(-56px);
     transition: height 0.2s ease-out;
     z-index: 500;
     cursor: pointer;
-
 }
 .stack-2.cloned2 {
     position: fixed;
@@ -230,11 +198,9 @@ height: auto;}
     min-height: 200px;
     bottom: 0;
     left: 0;
-
-
 }
 .footer-logo > img{
-    width: 50px;
+    width: 100px;
     height: auto;
 }
 ul.footer-list{
@@ -257,8 +223,6 @@ ul.footer-list-left li{
     width: 100%;
     padding: 20px 0;
     min-height: 300px;
-
-
 }
 .features{
     padding: 0 20px;
@@ -266,31 +230,16 @@ ul.footer-list-left li{
 }
 .form-wrapper{
     background-color: #ffffff;
-
     width: 80%;
     margin: 0 auto;
     height: auto;
     box-shadow: none;
     padding: 20px;
 }
-.cam iframe{
-
-
-}
-
-.cam{
-
-
-
-
-}
 .form-control{
-
     border-radius: 2px;
-
-transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
     height: 44px;
-
 }
 .form-control:hover{
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16),0 0 0 1px rgba(0,0,0,0.08);
@@ -333,35 +282,31 @@ transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 .profile-wrapper{
     -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
     display: flex;
--moz-box-orient: vertical;
-box-orient: vertical;
-flex-direction: column;
-height: -moz-calc(100% - 64px);
-height: calc(100% - 64px);
-max-width: 100%;
-
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    flex-direction: column;
+    height: -moz-calc(100% - 64px);
+    height: calc(100% - 64px);
+    max-width: 100%;
 }
 .right-col {
     backface-visibility: hidden;
     min-height: 100%;
     margin-top: 80px;
-
 }
 .right-col{
     position: relative;
     z-index: 1;
- margin-left: calc((100% - 24px)/4);
-
+    margin-left: calc((100% - 24px)/4);
 }
 .campaign-header{
     width: 100%;
     top: 0;
-left: 0;
-right: 0;
-z-index: 3;
-
+    left: 0;
+    right: 0;
+    z-index: 3;
     position: fixed;
 }
 .page-nav-wrapper{
@@ -370,12 +315,11 @@ z-index: 3;
     padding-right: 30px;
     padding-top: 10px;
     animation: slideHeader .3s cubic-bezier(0.0,0.0,0.2,1);
-transform: translateZ(0);
-      background-color: #04bfad;
-box-sizing: border-box;
-
--moz-box-shadow: 0 1px 8px rgba(0,0,0,.3);
-box-shadow: 0 1px 8px rgba(0,0,0,.3);
+    transform: translateZ(0);
+    background-color: #04bfad;
+    box-sizing: border-box;
+    -moz-box-shadow: 0 1px 8px rgba(0,0,0,.3);
+    box-shadow: 0 1px 8px rgba(0,0,0,.3);
 }
 .page-nav{
     padding-left: 30px;
@@ -401,16 +345,12 @@ a.btn-cam{
 }
 .for-rank{
     position: relative;
-display: block;
-left: 0;
-right: 0;
-
-width: 100%;
-
-height: 200px;
-
+    display: block;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 200px;
     background-color: red;
-
 }
 .campaign-wrapper{
     background-color: #f8f8f8;
@@ -422,7 +362,6 @@ height: 200px;
 .ns-pic{
     width: 100%;
     max-height: 36px;
-
     margin-top: -18px;
     position: relative;
     margin-bottom: 42px;
@@ -448,14 +387,12 @@ height: 200px;
   }
 }
 .ns-lg{
-
-  margin-right: -21px; /* 20px padding + 1px border */
-  margin-bottom: 20px;
-  margin-left: -20px;
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
     min-height: 45px;
     cursor: pointer;
     padding: 10px;
-
     background-color: #080808;
 }
 .ns-lg > img{
@@ -477,7 +414,6 @@ height: 200px;
     width: 100%;
     height: 80px;
     padding-right: 50px;
-
     position: fixed;
     background-color: transparent;
 
@@ -506,8 +442,8 @@ height: 200px;
     padding: 10px;
     height: auto;
     background-color: #fff;
-   border: 1px solid #E4E8EB;
-border-radius: 3px;
+    border: 1px solid #E4E8EB;
+    border-radius: 3px;
 }
 .nm-deci ul {
     list-style: none;
@@ -539,7 +475,6 @@ border-radius: 3px;
 	background-position: 0 0;
 }
 
-/* For IE8 - See #6727 */
 .ui-slider.ui-state-disabled .ui-slider-handle,
 .ui-slider.ui-state-disabled .ui-slider-range {
 	filter: inherit;
@@ -583,7 +518,6 @@ border-radius: 3px;
 	top: 0;
 }
 .navbar-default {
-    background-color: transparent;
     border-color: transparent;
     background: transparent;
     box-shadow: none;
@@ -660,10 +594,7 @@ ul.navbar-right{
         margin-top: 0;
         width: 80%;
     }
-
 }
-
-
 .nm-value{
     font-size: 40px;
     font-family: 'Oswald', serif;
@@ -681,36 +612,35 @@ h1.nm-nomargin{
     height: 128px;
     width: 128px;
     margin: 0 auto;
-
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 1rem;
-
 }
 .nm-featured {
     background: #f3f5f5;
     overflow: hidden;
     padding: 50px 5px 80px;
 }
+
 .nm-cam-dt{
     color: #888;
     font-weight: bold;
 }
+
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
 }
+
 .nm-campaign-wrapper{
     width: 100%;
-
     margin: 0 auto;
     /*border: 1px solid #E4E8EB;*/
     -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-  /* -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);*/
+    /* -moz-box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);*/
     background-color: #ffffff;
-
     margin-bottom: 20px;
 }
 .nm-sep{
@@ -749,7 +679,6 @@ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);*/
 }
 .nm-radio label {
     /*min-width: 400px;*/
-
     border-radius: 3px;
     padding-right: 5px;
     border: 1px solid #D1D3D4;
@@ -762,7 +691,6 @@ box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);*/
     position: relative;
     line-height: 2.5em;
     text-indent: 3.25em;
-
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -815,15 +743,10 @@ ul.nm-ul li{
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .open > a {
     background-image: none;
-
-
-
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 .table-responsive {
-
-
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
@@ -831,55 +754,50 @@ ul.nm-ul li{
 .page-header {
     padding-bottom: 9px;
     font-size: 16px;
-font-weight: 400;
-color: #757575;
-line-height: 1.1;
-text-transform: uppercase;
-     font-family: 'Roboto', sans-serif;
-
-
+    font-weight: 400;
+    color: #757575;
+    line-height: 1.1;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
     margin: 0 0 0;
     padding-top: 9px;
-
     border-bottom: 1px solid #eee;
 }
 @media (max-width: 768px) {
     .first-stack{
-    height: 500px;
+        height: 500px;
         overflow: hidden;
-}
+    }
     .nm-main-logo{
         margin-left: 0;
     }
     .landing {
         background:#ffffff;
     }
-
     .nm-value-wrapper{
     padding-top: 0px;
-}
+    }
     .main{
         padding-top: 80px;
     }
     .sticky-header .navbar-toggle .icon-bar {
     background-color: #000;
-}
+    }
     .navbar-toggle{
-    margin-top: 0px;
-}
+        margin-top: 0px;
+    }
     .navbar-brand {
-    float: left;
-    height: 50px;
-    padding: 15px 0;
-    font-size: 18px;
-    line-height: 20px;
+        float: left;
+        height: 50px;
+        padding: 15px 0;
+        font-size: 18px;
+        line-height: 20px;
+    }
+    .sticky-header  .btn {
+        display: inline-block;
+        padding: 6px 6px
+    }
 }
-  .sticky-header  .btn {
-      display: inline-block;
-      padding: 6px 6px
-  }
-}
-
 .nm-main{
     padding: 10px;
 }
@@ -887,37 +805,35 @@ text-transform: uppercase;
     background-image: none;
     box-shadow: none;
 }
-
 .carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
 }
 .carousel-fade .carousel-inner .item {
-
-  opacity: 0;
-  -webkit-transition-property: opacity;
-  -moz-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
 }
 .carousel-fade .carousel-inner .active {
-  opacity: 1;
+    opacity: 1;
 }
 .carousel-fade .carousel-inner .active.left,
 .carousel-fade .carousel-inner .active.right {
-  left: 0;
-  opacity: 0;
-  z-index: 1;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
 }
 .carousel-fade .carousel-inner .next.left,
 .carousel-fade .carousel-inner .prev.right {
-  opacity: 1;
+    opacity: 1;
 }
 .carousel-fade .carousel-control {
-  z-index: 2;
+    z-index: 2;
 }
 .nm-carry{
     position: relative;
@@ -944,75 +860,47 @@ text-transform: uppercase;
 .nm-mobile-stack{
     width: 100%;
     position: relative;
-
     height: auto;
-
     top: 0;
-
 }
 @media (max-width: 767px) {
     .nm-main-logo .nm-logo > img{
         width: 180px;
         height: auto;
     }
- /* Carousel base class */
-.carousel {
-
-    height: 200px;
-  margin-bottom: 0;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;}
-
-/* Declare heights because of positioning of img element */
-.carousel .item {
-
-    height: 200px;
-background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
-}
+    .carousel {
+        height: 200px;
+        margin-bottom: 0;
+    }
+    .carousel .item {
+        height: 200px;
+        background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
+    }
 }
 
-/* tablets */
+
 @media (max-width: 991px) and (min-width: 768px) {
-    /* Carousel base class */
     .carousel {
         min-height: 400px;
-
         height: auto;
-
         margin-bottom: 0;
     }
-
-    /* Since positioning the image, we need to help out the caption */
     .carousel-caption {
         z-index: 10;
     }
-
-    /* Declare heights because of positioning of img element */
     .carousel .item {
         min-height: 400px;
-
         height: auto;
         background: linear-gradient(to right, #29fd5e 0, #2dfffd 100%);
     }
 }
-/* laptops */
+
 @media (max-width: 1023px) and (min-width: 992px) {
-    /* Carousel base class */
     .carousel {
         min-height: 500px;
         height: auto;
-
         margin-bottom: 0;
     }
-
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-        z-index: 10;
-    }
-
-    /* Declare heights because of positioning of img element */
     .carousel .item {
         min-height: 500px;
         height: auto;
@@ -1020,22 +908,12 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
     }
 }
 
-/* desktops */
 @media (min-width: 1024px) {
-    /* Carousel base class */
     .carousel {
         min-height: 700px;
         height: auto;
-
         margin-bottom: 0;
     }
-
-    /* Since positioning the image, we need to help out the caption */
-    .carousel-caption {
-        z-index: 10;
-    }
-
-    /* Declare heights because of positioning of img element */
     .carousel .item {
         min-height: 700px;
         height: auto;
@@ -1057,19 +935,19 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
     color: #ffffff;
     background-color: #079e8f;
 }
-/* form starting stylings ------------------------------- */
+/* request mobile-form starting styling ------------------------------- */
 .group 			  {
   position:relative;
   margin-bottom:45px;
 }
-.input-nm 				{
-  font-size:18px;
-  padding:6px 6px 6px 5px;
-  display:block;
-  width:100%;
-  border:none;
+.input-nm{
+    font-size:18px;
+    padding:6px 6px 6px 5px;
+    display:block;
+    width:100%;
+    border:none;
     color: #757575;
-  border-bottom:1px solid #757575;
+    border-bottom:1px solid #757575;
 }
 .input-nm:focus 		{ outline:none; }
 
@@ -1086,16 +964,19 @@ background: linear-gradient(to right,#29fd5e 0,#2dfffd 100%);
   -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
 }
-
 /* active state */
 input:focus .nm_lb, input:valid ~ .nm_lb 		{
   top:-20px;
   font-size:14px;
   color: #999;
 }
-
 /* BOTTOM BARS ================================= */
-.bar 	{ position:relative; margin-top: 2px; display:block; width:100%; }
+.bar 	{
+    position:relative;
+    margin-top: 2px;
+    display:block;
+    width:100%;
+}
 .bar:before, .bar:after 	{
   content:'';
   height:2px;
@@ -1113,21 +994,9 @@ input:focus .nm_lb, input:valid ~ .nm_lb 		{
 .bar:after {
   right:0;
 }
-
 /* active state */
 .input-nm:focus ~ .bar:before, input:focus ~ .bar:after {
   width:100%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%;
-  width:100%;
-  top:25%;
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
 }
 
 /* active state */
@@ -1140,22 +1009,21 @@ input:focus .nm_lb, input:valid ~ .nm_lb 		{
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
 	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
+    to 	{ width:0; background:transparent; }
 }
 @-moz-keyframes inputHighlighter {
 	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
+    to 	{ width:0; background:transparent; }
 }
 @keyframes inputHighlighter {
 	from { background:#5264AE; }
-  to 	{ width:0; background:transparent; }
+    to 	{ width:0; background:transparent; }
 }
 
 .nm-invite-wrapper-2{
     width: 100%;
     padding: 10px;
 }
-
 .nm-tg{
     color: #101010;
     text-transform: uppercase;

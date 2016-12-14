@@ -8,32 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
+<link rel="icon" type="image/png" href="{% static 'influencers/images/fav-01.png' %}" sizes="16x16">
+<link rel="icon" type="image/png" href="{% static 'influencers/images/fav-02.png' %}" sizes="32x32">
+<link rel="icon" type="image/png" href="{% static 'influencers/images/fav-03.png' %}" sizes="96x96">
     <meta name="author" content="Noisemakers">
-<link rel="stylesheet" href="{% static 'influencers/css/bootstrap-slider.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'influencers/css/bootstrap-slider.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'influencers/css/font-awesome.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'influencers/css/bootstrap-theme.min.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'influencers/css/bootstrap.min.css' %}" type="text/css">
-<link rel="stylesheet" href="{% static 'django_modalview/css/modal.css' %}" type="text/css" />
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
- <script type="text/javascript" src="{% static 'influencers/js/jquery.min.js' %}"></script>
-    <script type="text/javascript">
-	(function ($) {
-  $(document).ready(function(){
-	$(".sticky-header").hide();
-	$(function () {
-		$(window).scroll(function () {
-			if ($(this).scrollTop() > 100) {
-				$('.sticky-header').fadeIn(500);
-			} else {
-				$('.sticky-header').fadeOut(500);
-			}
-		});
-	});
-});
-  }(jQuery));
-	</script>
-
-
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{% static 'influencers/js/bootstrap-slider.js' %}"></script>
 <script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -49,32 +33,16 @@
   };
 
   return t;
-}(document, "script", "twitter-wjs"));</script>
-
-
-
-
-    <link rel="stylesheet" href="{% static 'influencers/css/noisemakers.css' %}" type="text/css">
+}(document, "script", "twitter-wjs"));
+</script>
+<link rel="stylesheet" href="{% static 'influencers/css/noisemakers.css' %}" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
-<style>
+    <style>
     .stack-2 .header-title{
         background-image: url('{% static "influencers/images/how-it-works.svg" %}') ;
         background-position: left center;
         background-size: 80px auto;
-
         background-repeat: no-repeat;
-    }
-    .stack-1 .header-title{
-        background-image: url('{% static "influencers/images/how-it-works.svg" %}') ;
-        background-position: left center;
-
-
-        background-repeat: no-repeat;
-    }
-    .dropdown-toggle{
-
-
     }
     .sign-up-icon{
         background-image:  url('{% static "influencers/images/icon-sign-up.svg" %}');
@@ -85,9 +53,7 @@
      .pay-icon{
         background-image:  url('{% static "influencers/images/icon-get-paid.svg" %}');
     }
-
 </style>
-
 {% block inline_style %}
 {% endblock %}
     </head>
@@ -97,13 +63,9 @@
     {% block global_header %}
     {% endblock %}
 </div>
-
-
     {% block content %}
     {% endblock %}
-
 {% block gloal_footer %}
-
     <footer class="mast-footer clearfix">
         <div class="container-fluid">
             <div class="row">
@@ -112,7 +74,6 @@
                         <li><i class="fa fa-twitter "></i> </li>
                         <li><i class="fa fa-facebook "></i> </li>
                         <li><i class="fa fa-instagram "></i> </li>
-
                     </ul>
                 </div>
             </div>
@@ -120,34 +81,40 @@
             <div class="row">
                 <div class="col-md-6">
                     <ul class=" footer-list list-unstyled">
-
-                        <li>FAQs</li>
-                        <li>Support</li>
+                        <li><a href="{% url 'faq' %}" >FAQs</a></li>
+                        <li><a href="{% url 'brands' %}"> Brand</a></li>
                         <li>Terms</li>
-
                     </ul>
                 </div>
-
                 <div class="col-md-6">
                     <div class="footer-logo clearfix" style="width: auto;float: right;
                   ">
-
-                    <img src="{% static 'influencers/images/noisemaker-mark-shade-02.svg' %}">
+                    <img src="{% static 'influencers/images/surkreo-dark.svg' %}">
                         <br>
-                        &copy;2016 Noisemakers
+                        &copy;{% now "Y" %} &nbsp; Surkreo
                     </div>
                 </div>
-
-
         </div>
         </div>
-
     </footer>
 {% endblock %}
 </div>
-
-
-
+<script type="text/javascript" language="JavaScript">
+	(function ($) {
+  $(document).ready(function(){
+	$(".sticky-header").hide();
+	$(function () {
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 100) {
+				$('.sticky-header').fadeIn(500);
+			} else {
+				$('.sticky-header').fadeOut(500);
+			}
+		});
+	});
+});
+  }(jQuery));
+	</script>
 <script src="{% static 'influencers/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript">
     $(window).load(function(){
@@ -159,82 +126,27 @@
         $('#modal01').modal('show');
     });
 </script>
-<script type="text/javascript" src="{% static 'django_modalview/js/jquery.form.js' %}"></script>
-<script type="text/javascript" src="{% static 'django_modalview/js/django_modal_view.js' %}"></script>
-<script>
-// Create a clone of the menu, right next to original.
-$('.stack-1').addClass('original').clone().insertAfter('.stack-1').addClass('cloned').removeClass('original').hide();
 
-scrollIntervalID = setInterval(stickIt, 10);
-function stickIt() {
-
-  var orgElementPos = $('.landing').offset();
-  orgElementTop =  orgElementPos.top;
-
-  if ($(window).scrollTop() <= orgElementTop + $('.landing').outerHeight() - window.innerHeight + 112) {
-    // scrolled past the original position; now only show the cloned, sticky element.
-
-    // Cloned element should always have same left position and width as original element.
-    orgElement = $('.original');
-    coordsOrgElement = orgElement.offset();
-    leftOrgElement = coordsOrgElement.left;
-    widthOrgElement = orgElement.css('width');
-    $('.cloned').css('left',leftOrgElement+'px').css('bottom',0).css('width',widthOrgElement).show();
-    $('.original').css('visibility','hidden');
-  } else {
-    // not scrolled past the menu; only show the original menu.
-    $('.cloned').hide();
-    $('.original').css('visibility','visible');
-  }
-}
-</script>
 <script>
 // Create a clone of the menu, right next to original.
 $('.stack-2').addClass('original2').clone().insertAfter('.stack-2').addClass('cloned2').removeClass('original2').hide();
-
 scrollIntervalID = setInterval(stickIt, 10);
-
-
 function stickIt() {
-
   var orgElementPos = $('.landing').offset();
   orgElementTop =  orgElementPos.top;
-
   if ($(window).scrollTop() <= orgElementTop + $('.landing').outerHeight() - window.innerHeight + 56 ) {
-    // scrolled past the original position; now only show the cloned, sticky element.
-
-    // Cloned element should always have same left position and width as original element.
     orgElement = $('.original2');
     coordsOrgElement = orgElement.offset();
     leftOrgElement = coordsOrgElement.left;
     widthOrgElement = orgElement.css('width');
-
     $('.cloned2').css('left',leftOrgElement+'px').css('bottom',0).css('width',widthOrgElement).show();
     $('.original2').css('visibility','hidden');
   } else {
-    // not scrolled past the menu; only show the original menu.
     $('.cloned2').hide();
     $('.original2').css('visibility','visible');
   }
-    var newshadow = $('.landing').offset();
-        shadowdo =  newshadow.top;
-        p = $('.how-it-works').offset();
-    p2= p.top;
-
-
-
-    if ($(window).scrollTop() >= shadowdo + $('.landing').outerHeight() - window.innerHeight + 112)
-    {
-        $('.cloned2').css('box-shadow' ,'0 0 8px rgba(0,0,0,0.12),0 -2px 8px rgba(0,0,0,0.24)');
-    }
-    else{
-        $('.cloned2').css('box-shadow' ,'none');
-    }
-
 }
 </script>
-
-
   <script src="{% static 'influencers/js/jquery.smooth-scroll.js' %}"></script>
   <script>
     $(document).ready(function() {
@@ -248,12 +160,5 @@ function stickIt() {
       });
     });
   </script>
-<script>
-    $(function(){
-    $('#my_modal_runner').DjangoModalRunner();
-});
-</script>
-
 </body>
-
 </html>

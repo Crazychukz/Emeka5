@@ -5,102 +5,109 @@
                    Campaigns {% endblock %}
 
 {% block tracker %}
-<div class="nm-tracker  hidden-xs ">
-       <form class="form-inline"  method="post" action=".">
-           {% csrf_token %}
-
-    <div class="input-group add-on">
-      <input class="form-control" placeholder="Enter Tracking Number" name="tracking_id" id="id_tracking_id" type="text">
-      <div class="input-group-btn">
-        <button class="btn btn-default" style="height: 44px;;" type="submit"><i class="fa fa-fw fa-location-arrow"></i></button>
-      </div>
+    <div class="nm-tracker  hidden-xs ">
+        <form class="form-inline"  method="post" action=".">
+            {% csrf_token %}
+            <div class="input-group add-on">
+                <input class="form-control" placeholder="Enter Tracking Number" name="tracking_id" id="id_tracking_id" type="text">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" style="height: 44px;;" type="submit"><i class="fa fa-fw fa-location-arrow"></i></button>
+                </div>
+            </div>
+            {{ form.tracking_id.errors.as_text }}
+            {{ alreadytracked }}
+            {{ noaction }}
+        </form>
     </div>
-        {{ form.tracking_id.errors.as_text }}
-       {{ alreadytracked }}
-       {{ noaction }}
-  </form>
-          </div>
 {% endblock%}
+
 {% block campaigns_nav_01 %}
-                <li class="active" ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
-                {% endblock %}
+    <li class="active" >
+        <a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true">
+        </i>&nbsp; Campaigns</a>
+    </li>
+
+{% endblock %}
+
 {% block campaigns_nav %}
-                <li class="active" ><a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Campaigns</a></li>
-                {% endblock %}
+    <li class="active" >
+        <a href="{% url 'campaigns' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true">
+        </i>&nbsp; Campaigns</a>
+    </li>
+{% endblock %}
+
  {% block right_col %}
-              <div class="row inline-block">
+     <div class="row inline-block">
                 {% for object in cam %}
-<div class="grid-sizer"></div>
-                    <div class=" col-md-6 cam  " >
-                    <div class="nm-campaign-wrapper">
-                    <div class="nm-hd-cam" style=" padding: 10px;">
-                        <p class="nm-cam-dt">Action<span class="mark">{{ object.action }}</span> </p>
-                        <p class="nm-cam-dt">Base Pay<span class="mark">&#8358; {{ object.base_pay }}</span></p>
-                        <p class="nm-cam-dt">Tracking Number<span class="mark">{{ object.dummy_tracker }}</span></p>
-                      </div>
-                        <div class="nm-sep">
-                            <hr>
-                        </div>
-                         {% if object.action == 'Retweet' %}
-                        <div class="nm-main" style="padding: 10px">
-                <blockquote class="twitter-tweet" style="max-height: 400px;">
-<a href="{{ object.url }}"></a></blockquote>
-                    </div>
+                    <div class="grid-sizer"></div>
+                <div class=" col-md-6 cam  " >
+                        <div class="nm-campaign-wrapper">
+                            <div class="nm-hd-cam" style=" padding: 10px;">
+                                <p class="nm-cam-dt">Action<span class="mark">{{ object.action }}</span> </p>
+                                <p class="nm-cam-dt">Base Pay<span class="mark">&#8358; {{ object.base_pay }}</span></p>
+                                <p class="nm-cam-dt">Tracking Number<span class="mark">{{ object.dummy_tracker }}</span></p>
+                            </div>
+                            <div class="nm-sep"><hr></div>
+                            {% if object.action == 'Retweet' %}
+                            <div class="nm-main" style="padding: 10px">
+                                    <blockquote class="twitter-tweet" style="max-height: 400px;">
+                                        <a href="{{ object.url }}"></a></blockquote>
+                                </div>
                             {% elif object.action == 'Follow' %}
-                         <div class="nm-main" style="padding: 10px">
-                         <a class="twitter-follow-button"
-  href="https://twitter.com/{{ object.follow_handle }}"
-  data-size="large">
-Follow @{{ object.follow_handle }}</a>
-                    </div>
-                              {% elif object.action == 'Tweet' %}
-                         <div class="nm-main" style="padding: 10px">
-
-                             <div class="well">
-
-                            <p><span class="mark"> Hashtag</span><br>{{ object.hash_tag }}</p>
-
-                             <p><span class="mark"> Desired Tweet</span><br>
-                                 {{ object.tweet }}</p>
+                                <div class="nm-main" style="padding: 10px">
+                                    <a class="twitter-follow-button"
+                                       href="https://twitter.com/{{ object.follow_handle }}" data-size="large">
+                                        Follow @{{ object.follow_handle }}</a>
+                                </div>
+                            {% elif object.action == 'Tweet' %}
+                            <div class="nm-main" style="padding: 10px">
+                                    <div class="well">
+                                        <p><span class="mark"> Hashtag</span><br>{{ object.hash_tag }}</p>
+                                        <p><span class="mark"> Desired Tweet</span><br>
+                                            {{ object.tweet }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
-                    </div>
-                        {% endif %}
-                    </div>
                     </div>
                 {% endfor %}
-            </div>
-              {% endblock %}
+     </div>
+ {% endblock %}
+
 {% block mobile_tracker %}
     <!-- mobile tracker -->
-<div class="nm-mobile-tracker hidden-lg hidden-sm">
-     <form class="form-inline" method="post" action=".">
-         {% csrf_token %}
-    {{ form.tracking_id.errors.as_text }}
-       {{ alreadytracked }}
-       {{ noaction }}
-    <div class="input-group add-on">
-      <input class="form-control" placeholder="Enter Tracking Number" name="tracking_id" id="id_tracking_id" type="text">
-      <div class="input-group-btn">
-        <button class="btn btn-default" style="height: 44px;;" type="submit"><i class="fa fa-fw fa-location-arrow"></i></button>
-      </div>
-    </div>
-  </form>
-</div>
-     <div class="modal fade" id="{{ modal01 }}" role="dialog" style="padding-top: 80px;">
-    <div class="modal-dialog">
-    <div class="modal-content" style="max-width: 300px; margin: 0 auto;">
-        <div class="modal-header">
-            <p class="text-center">You don get alert!</p>
-
-          <h3 class="modal-title text-center"><img style="width: 80px; height: auto;" src="{% static "influencers/images/earned-icon.svg" %}"> </h3>
-
-        </div>
-        <h2 class="text-center">&#8358;{{ earned }} </h2>
-        <div class="modal-body">
-
-
+    <div class="nm-mobile-tracker hidden-lg hidden-sm">
+        <form class="form-inline" method="post" action=".">
+            {% csrf_token %}
+            {{ form.tracking_id.errors.as_text }}
+            {{ alreadytracked }}
+            {{ noaction }}
+            <div class="input-group add-on">
+                <input class="form-control" placeholder="Enter Tracking Number"
+                       name="tracking_id" id="id_tracking_id" type="text">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" style="height: 44px;;" type="submit"><i class="fa fa-fw fa-location-arrow"></i></button>
                 </div>
+            </div>
+        </form>
+    </div>
+    <!-- mobile tracker -->
 
-      </div>
-</div></div>
+<!-- Alert modal -->
+    <div class="modal fade" id="{{ modal01 }}" role="dialog" style="padding-top: 80px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="max-width: 300px; margin: 0 auto;">
+                <div class="modal-header">
+                    <p class="text-center">You don get alert!</p>
+                    <h3 class="modal-title text-center">
+                        <img style="width: 80px; height: auto;" src="{% static "influencers/images/earned-icon.svg" %}">
+                    </h3>
+                </div>
+                <h2 class="text-center">&#8358;{{ earned }} </h2>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Alert modal -->
 {% endblock %}

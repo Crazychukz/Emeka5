@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Noisemakerz - FAQ" %}{% endblock %}
+{% load staticfiles %}
+{% block inline_style %}
+    <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_3.css' %}">
+    <style>
+    .panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+    .panel{
+        border-radius: 0;
+    }
+    .panel-group .panel + .panel {
+    margin-top: 0;
+}
+    .mastfoot {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+  }
+    @media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: absolute;
+    top: 0;
+  }
+  .mastfoot {
+    position: absolute;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+   body {
+          font-family: 'Roboto', sans-serif;
+       height: 100%;
+       margin-bottom: 200px;
+
+    color: #000;
+
+    background-color: #eeeeee;
+}
+    .nm-bg-2{
+        position: absolute;
+        height: 300px;
+    background-color: #079e8f;
+        z-index: -1;
+        top: 0;
+    }
+    .nm-multi{
+        width: 100%;
+        background-color: #ffffff;
+        margin-top: 50px;
+        min-height: 500px;
+        padding: 10px;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+     <div class="sign" style="width: 100%; padding-top: 80px; margin: 0 auto;">
+      <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <a  class="navbar-brand " href="{% url 'index' %}">
+              <div class="nm-logo" >
+                  <img  src="{% static "influencers/images/noisemaker-shade.svg" %}" alt="Noisemakerz Logo">
+              </div>
+          </a>
+      </div>
+      </nav>
+         <div class="container">
+         <div class="row">
+             <div class="col-sm-12">
+                 <div style="color: #ffffff" class="navbar-left list-unstyled">
+                     <h4>
+                         FAQ
+                     </h4>
+                 </div>
+             </div>
+         </div></div>
+
+         <div class="row">
+             <div class="col-xs-12 nm-bg-2"></div>
+         </div>
+    <div class="row">
+        <div class="col-md-2 col-xs-12"></div>
+        <div class="col-md-8 col-xs-12 no-padding">
+
+            <div class="nm-multi">
+                <h2 class="page-header text-center">Frequently Asked Questions</h2><br>
+                <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        What kind of brands do you work with?</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">Noisemakerz brings brands and agencies that are interested in reaching and
+ connecting with a large number of people in real time through social media influencers.</div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+       Are Noisemakerz members subject to an exclusivity agreement that prevents them from working with other companies?</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">No. Our goal is to provide our influencers with an additional means of
+earning money doing what they love. We don’t own our influencers, we won’t claim to represent you,
+and we will never prevent you from working with other brands, influencer networks,
+agencies, or influencer marketing companies. You are, and will always be, in charge.</div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+       What is influencer marketing?</a>
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">Influencer marketing is a collaboration between brands and influencers
+(commonly bloggers or people with engaged followings on social media). These two groups work together
+to deliver information about products and services in a format that consumers are willing to receive.
+Why is this necessary? Because people don’t choose to receive traditional advertisements; they do it
+ because the alternative is to live a life without TV, music, magazines, newspapers, or the Internet.
+  Influencers are the exact opposite. People choose to follow their blogs or social media accounts
+   because their content is valuable. People listen when influencers talk and trust what they have to say.
+Brands have taken note of this, and they’re looking for influencers to help them spread their messages. </div>
+    </div>
+  </div>
+
+
+                 <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+       How much can I charge?</a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+      <div class="panel-body">
+      Once you’ve connected all of your social media accounts to your TapInfluence profile,
+      our software will calculate suggested rates to guide you.
+      You can recalculate your rates monthly.</div>
+    </div>
+  </div>
+
+
+</div>
+
+
+            </div>
+        </div>
+
+            <div class="col-md-2 col-xs-12"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block gloal_footer %}
+    <div class="mastfoot" style=" margin:  0 auto;">
+        <div class="ft-logo" style="width: 100px; margin: 0 auto; padding: 4px;">
+            <img style="width: 90px; height: auto; margin: 0 auto;" src="{% static 'influencers/images/surkreo-dark.svg' %}" alt="Surkreo">
+        </div>
+        <div class="inner text-center">&copy; {% now "Y" %} <a href="http:\\www.surkreo.com" target="_blank" > Surkreo </a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,1 @@
+{% load i18n %}{% blocktrans %}Message from the Class Captain - Noisemakerz {% endblocktrans %}

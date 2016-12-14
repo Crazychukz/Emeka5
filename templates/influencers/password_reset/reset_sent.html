@@ -1,6 +1,7 @@
-
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load i18n %}
+
+{% block title %}{% trans "Password recovery sent" %}{% endblock %}
 {% load staticfiles %}
 {% block inline_style %}
     <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_3.css' %}">
@@ -30,27 +31,19 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="nm-dash" style="border-radius: 6px; box-shadow: #728099 0 1px 5px 0; margin: 0 auto; padding: 20px">
-                <h1 class="text-center page-header">Password Reset</h1>
-                <div class="">
-                    {% if form.errors %}
-                        <div class="alert alert-error">
-                        {% for error in form.non_field_errors %}
-                            {{ error }}
-                        {% endfor %}
-                    {%  endif %}
-                    <form method="post" action=".">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="id_email">Please enter your email</label>
-                            <input class="required form-control" placeholder="Email" id="id_email" maxlength=254" name="email"  type="email" required />
-                        </div>
+                <h1 style="color: #04bfad" class="text-center page-header"><i class="fa fa-envelope fa-2x"></i> </h1>
+
+                  {% blocktrans  %}
+                  <p class="text-center">The class captain sent a mail to</p>
+               <div class="text-center">
+                   <strong>
+                      {{ email }}
+               </strong>
+                      </div>
+                     <p class="text-center">Use the link in it to set a new password.</p>
+              {% endblocktrans %}
 
 
-                        <div class="form-group ">
-                            <input type="submit" class="btn nm-btn-primary" value="Reset" />
-                        </div>
-                    </form>
-                    </div>
                 </div>
             </div>
             <div class="col-md-4"></div>

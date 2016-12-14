@@ -1,0 +1,186 @@
+
+    html,
+body {
+
+
+}
+
+.site-wrapper {
+    width: 80%;
+    height: 100%; /* For at least Firefox */
+    min-height: 100%;
+    padding-top: 80px;
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
+
+
+/*
+ * Affix and center
+ */
+.mastfoot {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+@media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .cover-container {
+    width: 700px;
+
+  }
+}
+    .navbar-toggle{
+    margin-top: 12px;
+}
+
+.navbar-header{
+    text-align: center;
+
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #000;
+}
+.nm-hd-cam{
+    color: #000000;
+}
+.nm-cam-dt {
+    color: #000000;
+    font-weight: normal;
+}
+
+
+.main{
+    padding-top: 80px;
+}
+
+ul.navbar-right {
+    list-style: none;
+    margin-top: 0;
+    padding-top: 13px;
+}
+.dropdown-toggle img{
+    width: auto;
+    height: 30px;
+}
+    .navbar-default{
+    background-color: #fff;
+    border-color: #e7e7e7;
+    border-width: 0 0 1px;
+}
+.navbar-brand .nm-logo > img{
+    width: auto;
+    height: 30px;
+}
+.nav-sidebar  a{
+    color: rgb(136, 153, 166);
+    font-size: 16px;
+}
+
+.nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+

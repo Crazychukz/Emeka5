@@ -2,20 +2,106 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block inline_style %}
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
     <script>
- //   $('.row').masonry({
-  // options
- // itemSelector: '.cam',
- // columnWidth: '.grid-sizer',
-//  percentPosition: true
-//});
-    </script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
  <style>
+ input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+
+    /*fix for FF unable to apply focus style bug */
+    border: 1px solid white;
+
+    /*required for proper track sizing in FF*/
+    width: 100%;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height:20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #04bfad;
+    margin-top: -4px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #04bfad;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #04bfad;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
 
  </style>
-
     <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_02.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'influencers/css/ion.rangeSlider.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'influencers/css/ion.rangeSlider.skinHTML5.css' %}" type="text/css">
 
 {% endblock %}
 
@@ -119,7 +205,9 @@
           </ul>
 
         <ul class="nav nav-sidebar nm-ul-02">
-            <li><a href="">Faqs</a> </li>
+            <li><a href="{% url 'brands' %}">Brands</a> </li>
+            <li><a href="{% url 'faq' %}">FAQ</a> </li>
+
             </ul>
         <div class="n-footer-02">
            <em>&copy; {% now "Y" %} Noisemakers</em>
