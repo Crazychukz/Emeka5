@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from influencers.views import HomeViews
+from django.conf.urls.static import static
 from django.contrib import admin
 from . import settings
 
@@ -24,5 +25,5 @@ urlpatterns = [
     url(r'^$', HomeViews.as_view(), name='index'),
     url(r'^influencers/', include('influencers.urls')),
     url(r'^noisemaker_invite/', include('noisemaker_invite.urls'), name='noisemaker_invite'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
  
