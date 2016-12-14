@@ -15,9 +15,10 @@ import os
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -26,6 +27,8 @@ SECRET_KEY = 'q&w+d+_8sfx7$v##tq0zw_n6x)v&y_@oj6$a#ch06)ol@^7_r+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,7 +139,7 @@ USE_L10N = True
 USE_TZ = True
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 # Absolute filesystem path to the directory that will hold user-uploaded files.
@@ -166,6 +169,6 @@ EMAIL_HOST_PASSWORD = 'bb8e1082aa15b17889659adb0dea5187'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Noisemakerz <noisemakerz@crazychukz.com>'
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
