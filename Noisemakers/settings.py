@@ -152,7 +152,7 @@ STATIC_ROOT= '/static/influencers/'
 SITE_ID = 1
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/influencers/static/influencers/',
+    'http://stormy-coast-67103.herokuapp.com/static/influencers/',
 ]
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
