@@ -150,6 +150,10 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT= '/influencers/static/influencers/'
 SITE_ID = 1
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    '/influencers/static/influencers/',
+]
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
