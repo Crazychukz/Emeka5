@@ -263,7 +263,7 @@ class NoisemakersView(View):
 
               nm = NoisemakerProfile.objects.get(user = username)
               dc = nm.decibel
-              earn = "%.2f" % km * dc
+              earn = "%.2f" % int(km * dc)
               reach = nm.number_of_friends
               nm.escrow = nm.escrow + (km * dc)
 
@@ -292,7 +292,7 @@ class NoisemakersView(View):
 
               nm = NoisemakerProfile.objects.get(user = username)
               dc = nm.decibel
-              earn = "%.2f" %  km * dc
+              earn = "%.2f" %  int(km * dc)
               reach = nm.number_of_friends
               nm.escrow = nm.escrow + (km * dc)
               modal = 'modal01'
