@@ -1,0 +1,116 @@
+{% extends 'influencers/noisemakerz_base.html' %}
+{% block page_title %}
+    Fund Campaign
+{% endblock %}
+{% block your_campaigns_nav_01 %}
+                <li class="active" ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+                {% endblock %}
+ {% block your_campaigns_nav %}
+                <li class="active" ><a href="{% url 'create' %}"><i class="fa  fa-area-chart fa-fw" aria-hidden="true"></i>&nbsp; Your Campaigns</a></li>
+                {% endblock %}
+{% block right_col %}
+    <div class="nm-dash">
+             <h4 class="page-header"> Campaign {{ object.dummy_tracker }}</h4>
+
+        <div class="row">
+<div class="col-md-6">
+{% if object.action == 'Retweet' %}
+                        <div class="nm-main" style="padding: 10px">
+                <blockquote class="twitter-tweet" style="max-height: 400px;">
+<a href="{{ object.url }}"></a></blockquote>
+                    </div>
+                            {% elif object.action == 'Follow' %}
+                         <div class="nm-main" style="padding: 10px">
+
+                         <a class="twitter-follow-button"
+  href="https://twitter.com/{{ object.follow_handle }}"
+  data-size="large">
+Follow @{{ object.follow_handle }}</a>
+                    </div>
+                              {% elif object.action == 'Tweet' %}
+                          <div class="nm-main" style="padding: 10px">
+
+                             <div class="well">
+
+                            <p><span class="mark"> Hashtag</span><br>{{ object.hash_tag }}</p>
+
+                             <p><span class="mark"> Desired Tweet</span><br>
+
+
+                            {{ object.tweet }}</p>
+                        </div>
+
+                    </div>
+
+
+                        {% endif %}
+
+</div>
+<div class="col-md-6">
+<label>Decibel</label>
+<div class="progress">
+  <div  class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+  aria-valuenow="{{ object.decibel }}" aria-valuemin="0" aria-valuemax="100" style="width:{%  widthratio object.decibel 10 1 %}%; color: #080808;">
+{{ object.decibel }}Db
+  </div>
+</div>
+<p>
+    {% if object.approved == False %}
+                  <i class="fa fa-spinner fa-pulse  fa-fw"></i>&nbsp;Waiting Approval
+                      {% elif object.approved == True %}
+                      <i class="fa fa-check"></i>&nbsp;Campaign Approved
+                      {% endif %}
+</p>
+    <p><label>Action</label>
+        {{ object.action }}
+    </p>
+    <p><label>Base Pay</label>
+        &#8358;{{ object.base_pay }}
+    </p>
+    <P>
+       <label>Campaign Budget</label>&nbsp; &#8358;{{ object.budget }}
+    </P>
+<span>*Note that the actual influencers budget is <strong>&#8358;{{ object.influencers_budget  }}</strong>.<br> 70% of campaign budget</span>
+<p>
+    <form>
+  <button type="button" class="btn btn-default" onclick="payWithPaystack()"><i class="fa fa-credit-card"></i> Pay Now </button>
+</form>
+</p>
+
+</div>
+
+
+             </div>
+
+        <hr>
+             </div>
+
+
+
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'pk_test_41186be0a0c30cea22a397c7f8ea79c03d4b2a4c',
+      email: '{{ campaigns.user.email }}',
+      amount: parseInt({{ campaigns.budget }}) * 100,
+      ref: "{{ campaigns.dummy_tracker }}",
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: "mobile_number",
+                value: "+2348012345678"
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script>
+{% endblock %}

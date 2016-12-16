@@ -98,7 +98,7 @@
 <fieldset>
     <legend>Preference </legend>
     <span>*Set your campaign preference</span><br>
-    <select multiple="multiple" id="id_preference" name="preference" class=" selectpicker" required>
+    <select multiple id="id_preference" name="preference" class=" selectpicker" required>
 
 <option value="All">All</option>
 <option value="Entertainment,Fashion,Lifestyle">Entertainment,Fashion,Lifestyle</option>
@@ -187,17 +187,23 @@ Follow @{{ objects.follow_handle }}</a>
 <div class="col-md-6">
 <label>Decibel</label>
 <div class="progress">
-  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-  aria-valuenow="{{ objects.decibel }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ objects.decibel }}%">
-{{ objects.decibel }}
+  <div  class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+  aria-valuenow="{{ objects.decibel }}" aria-valuemin="0" aria-valuemax="100" style="width:{%  widthratio objects.decibel 10 1 %}%; color: #080808;">
+{{ objects.decibel }}Db
   </div>
 </div>
 <p>
     {% if objects.approved == False %}
-                  <i class="fa fa-spinner fa-pulse  fa-fw"></i>&nbsp;Waiting Approval
+        <a class="btn nm-btn-primary disabled"  data-toggle="tooltip"  title="Awaiting campaign approval"
+   href="">Fund Campaign</a>
+                  <i class="fa fa-spinner fa-pulse  fa-fw"></i>&nbsp;Waiting Campaign Approval
                       {% elif objects.approved == True %}
-                      <i class="fa fa-check"></i>
-                      {% endif %}
+                       <a class="btn nm-btn-primary"  data-toggle="tooltip"  title="fund campaign"
+   href="/influencers/fund_campaign/{{ objects.campaign_id }}/{{ objects.lookup }}/">Fund Campaign</a>&nbsp;<i class="fa fa-check"></i>
+                     &nbsp;Campaign Approved {% endif %}
+</p>
+<p>
+    <label>Campaign Budget:</label>&#8358;{{ objects.budget }}
 </p>
     <p><label>Action</label>
         {{ objects.action }}
@@ -211,13 +217,26 @@ Follow @{{ objects.follow_handle }}</a>
     <p><label>Noise</label>
         {{ objects.estimated_reach }} People reached
     </p>
+{% if objects.funded == "True" %}
     <P>
-        &#8358;{{ objects.budget }} Left to spend
+        &#8358;{{ objects.influencers_budget }} Left to spend
     </P>
+    <p>
+    <span class="label label-success">Live</span>
+    </p>
+{% endif %}
+  <P>
+{% autoescape on %}
+    <labe>Preference</labe>     <mark>{{ objects.preferences|join:"" }}</mark>
+{% endautoescape %}
+
+    </P>
+
 </div>
 
 
              </div>
+
         <hr>
 
                  {% endfor %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+import operator
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import condition
 from django.shortcuts import render_to_response
@@ -56,6 +57,8 @@ try:
 except ImportError:
     from django.contrib.sites.models import get_current_site
 
+
+
 class SaltMixin(object):
     salt = 'password_recovery'
     url_salt = 'password_recovery_url'
@@ -95,7 +98,8 @@ def Brand(request):
     return render(request, 'influencers/brand.html')
 def Influencers(request):
     return render(request, 'influencers/influencers.html')
-
+def error404(request):
+    return render(request, 'influencers/404.html')
 
 class SignUpView(View):
     def get(self, request, *arg, **kwargs):
@@ -194,16 +198,21 @@ class NoisemakersView(View):
     template_name = 'influencers/noisemakerz_base'
 
     def get(self, request, *args, **kwargs):
-        us = NoisemakerProfile.objects.filter(user = request.user)
+        us = NoisemakerProfile.objects.get(user = request.user)
         form = ValidationForm()
-        cam= Campaigns.objects.filter(approved=True).order_by('-campaign_id')
+        preferences = us.preferences
+
+
+
+        cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"), approved=True,funded = True, ).order_by('-campaign_id')
+
 
 
         context = {'us' : us, 'form' : form, 'cam' : cam ,  }
         return render(request, 'influencers/campaigns.html', context)
 
     def post(self, request, *args, **kwargs):
-        us = NoisemakerProfile.objects.filter(user = request.user)
+        us = NoisemakerProfile.objects.get(user = request.user)
 
         form = ValidationForm(request.POST)
         tracking_id = request.POST.get('tracking_id', '')
@@ -217,6 +226,7 @@ class NoisemakersView(View):
             nm_user = NoisemakerProfile.objects.get(user=user)
             user_handle = nm_user.twitter_handle
             trackers_ID = nm_user.twitter_ID
+            user_decibel = nm_user.decibel
 
             campaign = Campaigns.objects.get(dummy_tracker=tracking_id)
             track = campaign.tracking_ID
@@ -241,7 +251,11 @@ class NoisemakersView(View):
 
 
 
-            cam= Campaigns.objects.filter(approved=True)
+
+            campaign_pay = Campaigns.base_pay
+            possible = int(user_decibel) * int(campaign_pay)
+            preferences = us.preferences
+            cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"),approved=True,funded = True, ).order_by('-campaign_id')
 
 
             chc = Tracker.objects.filter(trackers_ID=user, tracking_ID=dummy ).exists()
@@ -265,13 +279,13 @@ class NoisemakersView(View):
               dc = nm.decibel
               earn = "%.2f" % int(km * dc)
               reach = nm.number_of_friends
-              nm.escrow = nm.escrow + (km * dc)
+              nm.escrow = nm.escrow + int(earn)
 
 
               nm.save()
               modal = 'modal01'
 
-              bp.budget = bp.budget - (km * dc)
+              bp.influencers_budget = bp.influencers_budget - (km * dc)
               bp.estimated_reach = bp.estimated_reach + int(reach)
               bp.activity_count = bp.activity_count + 1
               bp.save()
@@ -294,13 +308,13 @@ class NoisemakersView(View):
               dc = nm.decibel
               earn = "%.2f" %  int(km * dc)
               reach = nm.number_of_friends
-              nm.escrow = nm.escrow + (km * dc)
+              nm.escrow = nm.escrow + int(earn)
               modal = 'modal01'
 
 
               nm.save()
 
-              bp.budget = bp.budget - (km * dc)
+              bp.influencers_budget = bp.influencers_budget - (km * dc)
               bp.estimated_reach = bp.estimated_reach + int(reach)
               bp.activity_count = bp.activity_count + 1
               bp.save()
@@ -308,7 +322,9 @@ class NoisemakersView(View):
               return render(request, 'influencers/campaigns.html', {'cam':cam, 'us':us, 'modal01' : modal, 'earned' : earn, 'form' : form})
 
 
-        cam = Campaigns.objects.filter(approved=True)
+
+        preferences = us.preferences
+        cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"),approved=True,funded = True, ).order_by('-campaign_id')
         noaction = 'Yet to carryout the action'
         errorclass5 = 'alert alert-danger'
         variables = {
@@ -406,9 +422,11 @@ class SummaryView(View):
 
 class CreateCampaignView(View):
 
+
     def get(self, request, *arg, **kwargs):
         user = User.objects.get(username=request.user)
         your_campaigns = Campaigns.objects.filter(user = user ).order_by('-campaign_id')
+
         form = CampaignForm()
         return render(request, 'influencers/create.html', {'form' : form , 'your_campaigns' : your_campaigns} )
     def post(self, request, *arg, **kwargs):
@@ -422,13 +440,14 @@ class CreateCampaignView(View):
             hash_tag = request.POST.get('hash_tag', '')
             tweet = request.POST.get('tweet', '')
             follow_handle = request.POST.get('follow_handle', '')
-            preference = request.POST.get('preference', '')
+            preference = form.cleaned_data['preference']
 
 
             tracking_id = url[-18:]
 
             budget = int(decibel) * int(base_pay)
             dmm = int(budget)
+            influ_budget = 0.7 * dmm
 
             user = User.objects.get(username=request.user)
             dummy_id  = random.randint(999, 9999) + dmm
@@ -436,14 +455,34 @@ class CreateCampaignView(View):
                                    follow_handle=follow_handle, hash_tag=hash_tag,
                                    tweet=tweet, url=url, base_pay=base_pay,
                                    decibel=decibel,preferences=preference,budget=budget,
-                                   tracking_ID=tracking_id)
+                                   tracking_ID=tracking_id, influencers_budget = influ_budget)
             new_campaign.save()
 
             return redirect('influencers/create.html')
-        var= {'form' : form
+        user = User.objects.get(username=request.user)
+        your_campaigns = Campaigns.objects.filter(user = user ).order_by('-campaign_id')
+        all_campaigns = Campaigns.objects.all()
+        var= {'form' : form , 'your_campaigns' : your_campaigns, 'all_campaigns' : all_campaigns
         }
 
         return render(request, 'influencers/create.html', var )
+from django.views.generic import DetailView
+
+class CampaignDetail(DetailView):
+
+
+    queryset = Campaigns.objects.filter()
+
+    def get_object(self):
+        # Call the superclass
+        object = super(CampaignDetail, self).get_object()
+        # Record the last accessed date
+        object.last_accessed = timezone.now()
+        object.save()
+        # Return the object
+        return object
+
+
 
 class GetStarted(View):
     def get(self, request, *args, **kwargs):
@@ -465,6 +504,7 @@ class GetStarted(View):
             update_nm.save()
 
             return redirect('dashboard')
+
         variable = {
         'form' : form
 

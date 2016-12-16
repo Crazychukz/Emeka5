@@ -3,7 +3,7 @@ import registration.views
 from django.conf.urls import url, include
 from influencers.views import NoisemakersView
 from Noisemakers import settings
-from influencers.views import PayoutView, ActivitiesView, SummaryView, CreateCampaignView, GetStarted, HomeViews, SignUpView
+from influencers.views import PayoutView,CampaignDetail, ActivitiesView, SummaryView, CreateCampaignView, GetStarted, HomeViews, SignUpView
 
 from noisemaker_invite.views import SendInvite
 from . import views
@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^faq/', views.Faq, name='faq'),
     url(r'^brands/', views.Brand, name='brands'),
     url(r'^influencers/', views.Influencers, name='influencers'),
+    url(r'^fund_campaign/(?P<pk>[0-9]+)/(?P<lookup>[-\w]+)/$', CampaignDetail.as_view(), name='fund_campaign'),
 ]
