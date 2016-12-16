@@ -5,7 +5,7 @@ from .models import Campaigns
 
 # Register your models here.
 class CampaignsAdmin(admin.ModelAdmin):
-    list_display = ('user', 'action', 'base_pay' , 'dummy_tracker', 'approved', 'budget', 'funded')
+    list_display = ('user', 'action', 'base_pay' , 'dummy_tracker', 'approved', 'budget',)
 
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'decibel', 'number_of_friends', 'rank', 'escrow')

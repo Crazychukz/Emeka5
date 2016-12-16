@@ -6,6 +6,9 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.db.models.fields import IntegerField
 
 
+from django.utils.crypto import get_random_string
+
+
 class BigIntegerField(IntegerField):
     empty_strings_allowed=False
     def get_internal_type(self):
@@ -33,6 +36,7 @@ class NoisemakerProfile(models.Model):
         ('Zenith International Bank Ltd', 'Zenith International Bank Ltd'),
     )
     PREFERENCES = (
+
         ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
         ('Internet,Technology,Computer & Software', 'Internet,Technology,Computer & Software'),
         ('Telecommunications,Publishing,News media', 'Telecommunications,Publishing,News media'),
@@ -124,11 +128,16 @@ class Campaigns(models.Model):
     activity_count = models.IntegerField(null=False, default=0)
     estimated_reach = models.IntegerField(null=False, default=0)
     decibel = models.FloatField(null=False, default=0.5)
-    preferences = models.CharField(max_length=250, choices=PREFERENCES)
+    preferences = models.CharField(max_length=6500,)
     budget = models.FloatField(null=False, verbose_name=('budget'), default=0.0)
+    influencers_budget = models.FloatField(null=False, verbose_name=('influencers_budget'), default=0.0)
     time_created = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(verbose_name=('approved'),default=False)
+    funded = models.BooleanField(verbose_name=('funded'),default=False)
     featured = models.BooleanField(default=False)
+    lookup = models.SlugField(unique=True,default=get_random_string,max_length=13,)
+
+
 
     def __str__(self):
          return "Campaigns: {0}".format(self.user)
@@ -137,6 +146,7 @@ class Campaigns(models.Model):
         ordering = ["campaign_id"]
         verbose_name = 'Campaign'
         db_table = 'Campaign'
+
 
 class  Tracker(models.Model):
     tracking_ID = models.CharField(verbose_name=('tracking id'),max_length=500)
