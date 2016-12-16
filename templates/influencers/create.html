@@ -217,7 +217,7 @@ Follow @{{ objects.follow_handle }}</a>
     <p><label>Noise</label>
         {{ objects.estimated_reach }} People reached
     </p>
-{% if objects.funded == "True" %}
+        {% if objects.funded == True %}
     <P>
         &#8358;{{ objects.influencers_budget }} Left to spend
     </P>
