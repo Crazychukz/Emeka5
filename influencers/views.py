@@ -559,7 +559,7 @@ class Recover(SaltMixin, generic.FormView):
 
     def send_notification(self):
         context = {
-            'site': self.get_site(),
+           # 'site': self.get_site(),
             'user': self.user,
             'username': get_username(self.user),
             'token': signing.dumps(self.user.pk, salt=self.salt),

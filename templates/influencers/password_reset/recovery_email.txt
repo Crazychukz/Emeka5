@@ -4,7 +4,7 @@
 
 {% trans "You can set your new password by following this link:" %}
 
-http://127.0.0.1:8000{% url "password_reset_reset" token %}
+http://noisemkerz.com{% url "password_reset_reset" token %}
 
 {% trans "If you don't want to reset your password, simply ignore this email and it will stay unchanged." %}
 
