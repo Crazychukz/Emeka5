@@ -307,7 +307,7 @@ class NoisemakersView(View):
               dc = nm.decibel
               earn = "%.2f" %  int(km * dc)
               reach = nm.number_of_friends
-              nm.escrow = nm.escrow + int(earn)
+              nm.escrow = nm.escrow + float(earn)
               modal = 'modal01'
 
 
