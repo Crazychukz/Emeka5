@@ -252,8 +252,7 @@ class NoisemakersView(View):
 
 
 
-            campaign_pay = Campaigns.base_pay
-            possible = int(user_decibel) * int(campaign_pay)
+
             preferences = us.preferences
             cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"),approved=True,funded = True, ).order_by('-campaign_id')
 
@@ -492,7 +491,7 @@ class GetStarted(View):
     def post(self, request, *args, **kwargs):
         form = HandleForm(request.POST)
         twitter_handle = request.POST.get('twitter_handle', '')
-        preference = request.POST.get('preference', '')
+        preference = form.cleaned_data['preference']
 
         if form.is_valid():
             user = request.user

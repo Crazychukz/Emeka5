@@ -204,3 +204,11 @@ color: #ffffff !important;
     padding-left: 3px;
     font-size: 10px;
 }
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    position: absolute;
+    display: inline-block;
+    right: 15px;
+        color: #04bfad;
+    margin-top: 5px;
+}
+
