@@ -231,8 +231,11 @@ Follow @{{ objects.follow_handle }}</a>
     </p>
         {% if objects.funded == True %}
     <P>
-        &#8358;{{ objects.influencers_budget }} Left to spend
+        &#8358;{{ objects.influencers_budget|floatformat:2 }} Left to spend
     </P>
+            <p>
+            <span class="label label-success">LIVE</span>
+            </p>
 
 {% endif %}
   <P>
