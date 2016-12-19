@@ -150,7 +150,7 @@ DATABASES['default'].update(db_from_env)
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/app/Noisemakers/staticfiles/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 SITE_ID = 1
 STATICFILES_DIRS = [
