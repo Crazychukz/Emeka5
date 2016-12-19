@@ -153,7 +153,7 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+   'app/Noisemakers/static/',
 ]
 SITE_ID = 1
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
