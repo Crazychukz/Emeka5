@@ -1,13 +1,13 @@
 
     html,
 body {
+        min-height: 400px;
 
 
 }
 
 .site-wrapper {
-    width: 80%;
-    height: 100%; /* For at least Firefox */
+    width: 80%; /* For at least Firefox */
     min-height: 100%;
     padding-top: 80px;
 }
@@ -106,7 +106,7 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    position: fixed;
+    position: absolute;
     top: 0;
   }
   .mastfoot {
