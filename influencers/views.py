@@ -92,6 +92,39 @@ BANKS = (
         ('Zenith International Bank Ltd', 'Zenith International Bank Ltd'),
     )
 
+def Request(request):
+        form = RequestInviteForm(data = request.POST)
+        if form.is_valid():
+            email_r = form.cleaned_data['email']
+            twitter_handle = request.POST.get('twitter_handle', '')
+            template = get_template('influencers/messages/invited')
+            template2 = get_template('influencers/messages/html.html')
+            context = Context({
+                'email': email_r,
+                'twitter_handle': twitter_handle,
+
+            })
+            cont = template2.render()
+            content = template.render(context)
+            email = EmailMessage("New Request",content,'Noisemakers <do_not_replay@domain.com>',['chukwuemekacharles88@gmail.com', 'office@surkreo.com'],
+                headers = {'Reply-To': email_r }
+            )
+            email.send()
+
+            email2 = EmailMessage("Message from the Class Captain",cont,'Noisemakers <do_not_replay@domain.com>', [email_r],)
+            email2.content_subtype = "html"
+            email2.send()
+
+            store = Requested(requested=email_r)
+            store.save()
+            modal01 = 'modal01'
+            return render(request, 'index.html', {'modal01': modal01})
+        variables ={
+            'form' : form
+        }
+
+        return render(request, 'influencers/request.html', variables)
+
 def Faq(request):
     return render(request, 'influencers/faq.html')
 def Brand(request):
@@ -165,12 +198,12 @@ class HomeViews(View):
             })
             cont = template2.render()
             content = template.render(context)
-            email = EmailMessage("New Request",content,'Noisemakers <do_not_replay@domain.com>',['chukwuemekacharles88@gmail.com'],
+            email = EmailMessage("New Request",content,'Noisemakers <do_not_replay@domain.com>',['chukwuemekacharles88@gmail.com', 'office@surkreo.com'],
                 headers = {'Reply-To': email_r }
             )
             email.send()
 
-            email2 = EmailMessage("Thank You",cont,'Noisemakers <do_not_replay@domain.com>', [email_r],)
+            email2 = EmailMessage("Message from the Class Captain",cont,'Noisemakers <do_not_replay@domain.com>', [email_r],)
             email2.content_subtype = "html"
             email2.send()
 

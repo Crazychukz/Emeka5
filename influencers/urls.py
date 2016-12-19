@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^faq/', views.Faq, name='faq'),
     url(r'^brands/', views.Brand, name='brands'),
     url(r'^influencers/', views.Influencers, name='influencers'),
+    url(r'^request/', views.Request, name='request_invite'),
     url(r'^fund_campaign/(?P<pk>[0-9]+)/(?P<lookup>[-\w]+)/$', CampaignDetail.as_view(), name='fund_campaign'),
 ]

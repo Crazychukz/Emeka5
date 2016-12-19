@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block inline_style %}
+    <link rel="stylesheet" href="{% static 'influencers/css/noisemakerz_3.css' %}">
+    <style>
+    body {
+    color: #000;
+    background-image: url('{% static "influencers/images/landing-bg-2.jpg" %}');;
+    background-color: #333;
+}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="sign" style="width: 100%; padding-top: 80px; margin: 0 auto;">
+     <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <a style="width: 100%; margin: 0 auto;" class="navbar-brand " href="{% url 'index' %}">
+              <div class="nm-logo" style="width: 180px; margin: 0 auto;">
+                  <img style="margin: 0 auto;" src="{% static "influencers/images/noisemaker-shade.svg" %}" alt="Noisemakerz Logo">
+              </div>
+          </a>
+      </div>
+      </nav>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="nm-dash" style="border-radius: 6px; box-shadow: #728099 0 1px 5px 0; margin: 0 auto; padding: 20px">
+                    <div class="nm-invite-wrapper" style="width: 100%; box-shadow: none;">
+                            <h4 class="nm-nomargin">GET INVITE FROM THE CLASS CAPTAIN</h4>
+                          <form action="." method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <div class="help-block with-errors">{{ form.email.errors.as_text }}</div>
+                                    <input class="form-control"  id="id_email" maxlength="150" name="email"
+                                           placeholder="Email address" type="email" required />
+                                </div>
+
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon"><i class="fa fa-at fa-fw"></i></span>
+                                    <input class="form-control" id="id_twitter_handle" name="twitter_handle"
+                                           type="text" placeholder="Twitter handle" required />
+                                </div>
+                                <p><input type="submit" class="btn nm-btn-primary" value="Request Invite"
+                                          style="width: 100%;" /></p>
+                            </form>
+
+
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-4"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="{{ modal01 }}" role="dialog" style="padding-top: 80px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="max-width: 300px; margin: 0 auto;">
+                <div class="modal-header">
+                    <p class="text-center">Almost done</p>
+                    <h3 class="modal-title text-center">
+                        <img style="width: 80px; height: auto;" src="{% static "influencers/images/noisemaker-user-icon.svg" %}">
+                    </h3>
+                </div>
+                <p class="text-center">The class captain is currently reviewing your request.<br> You'll get a mail form him soon </p>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block gloal_footer %}
+   <div class="mastfoot" style=" margin:  0 auto;">
+        <div class="ft-logo" style="width: 100px; margin: 0 auto; padding: 4px;">
+            <img style="width: 90px; height: auto; margin: 0 auto;" src="{% static 'influencers/images/Surkreo.png' %}" alt="Surkreo">
+        </div>
+        <div class="inner text-center">&copy; {% now "Y" %} <a href="http:\\www.surkreo.com" target="_blank" > Surkreo </a>
+        </div>
+    </div>
+
+
+{% endblock %}
