@@ -524,16 +524,17 @@ class GetStarted(View):
 
     def post(self, request, *args, **kwargs):
         form = HandleForm(request.POST)
-        twitter_handle = request.POST.get('twitter_handle', '')
-        preference = form.cleaned_data['preference']
+
 
         if form.is_valid():
+            twitter_handle = request.POST.get('twitter_handle', '')
+            preference = form.cleaned_data['preference']
             user = request.user
             twitter_ID = api.get_user(twitter_handle).id
             number_of_friends= api.get_user(twitter_handle).followers_count
             decibel = number_of_friends / 2000
             nf = int(number_of_friends)
-            update_nm = NoisemakerProfile(user=user, twitter_handle=twitter_handle,twitter_ID=twitter_ID,decibel=decibel, number_of_friends=nf, preference=preference)
+            update_nm = NoisemakerProfile(user=user, twitter_handle=twitter_handle,twitter_ID=twitter_ID,decibel=decibel, number_of_friends=nf, preferences=preference)
             update_nm.save()
 
             return redirect('dashboard')

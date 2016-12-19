@@ -264,7 +264,7 @@ class CampaignForm(forms.Form):
 
 class HandleForm(forms.Form):
     PREFERENCES = (
-         ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
+        ('Entertainment,Fashion,Lifestyle', 'Entertainment,Fashion,Lifestyle'),
         ('Internet & Technology', 'Internet & Technology'),
         ('Telecoms & Media', 'Telecoms & Media'),
         ('Health care & Agriculture', 'Health care & Agriculture'),
@@ -284,6 +284,12 @@ class HandleForm(forms.Form):
                                 widget=forms.TextInput(attrs=attrs_dict),
                                 error_messages={'invalid': _("This value must contain only letters, numbers and underscores.")})
     preference = forms.CharField(widget=forms.SelectMultiple(choices=PREFERENCES), required=True, label=_("preference"))
+
+    def clean_field(self):
+       # data = self.cleaned_data['preference']
+
+
+        return self.cleaned_data['preference']
 
 
 
