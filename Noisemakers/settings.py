@@ -151,7 +151,10 @@ DATABASES['default'].update(db_from_env)
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 SITE_ID = 1
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
@@ -168,7 +171,3 @@ DEFAULT_FROM_EMAIL = 'Noisemakerz <noisemakerz@crazychukz.com>'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-if DEBUG:
-   STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-   STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),]
