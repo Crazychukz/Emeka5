@@ -50,15 +50,14 @@ class Invitation(models.Model):
         return expiration_date <= timezone.now()
 
     def send_invitation(self, request, **kwargs):
-        current_site = (kwargs['site'] if 'site' in kwargs
-                        else Site.objects.get(id=1))
+        #current_site =  Site.objects.get(id=1)
         invite_url = reverse('accept-invite',
                              args=[self.key])
         invite_url = request.build_absolute_uri(invite_url)
 
         ctx = RequestContext(request, {
             'invite_url': invite_url,
-            'site_name': current_site.name,
+            #'site_name': current_site.name,
             'email': self.email,
             'key': self.key,
             'inviter': self.inviter,
