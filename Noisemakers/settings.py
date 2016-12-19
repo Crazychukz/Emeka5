@@ -26,7 +26,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'q&w+d+_8sfx7$v##tq0zw_n6x)v&y_@oj6$a#ch06)ol@^7_r+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 #SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -150,7 +150,7 @@ DATABASES['default'].update(db_from_env)
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = '/app/Noisemakers/staticfiles/'
 STATIC_URL = '/static/'
 SITE_ID = 1
 STATICFILES_DIRS = [
