@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^$', HomeViews.as_view(), name='index'),
     url(r'^influencers/', include('influencers.urls')),
     url(r'^noisemaker_invite/', include('noisemaker_invite.urls'), name='noisemaker_invite'),
+	url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root', settings.STATIC_ROOT}),
 ]
  
