@@ -286,10 +286,10 @@ class HandleForm(forms.Form):
     preference = forms.CharField(widget=forms.SelectMultiple(choices=PREFERENCES), required=True, label=_("preference"))
 
     def clean_field(self):
-       # data = self.cleaned_data['preference']
+        data = self.cleaned_data['preference']
 
 
-        return self.cleaned_data['preference']
+        return data
 
 
 

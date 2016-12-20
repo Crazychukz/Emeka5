@@ -238,7 +238,7 @@ class NoisemakersView(View):
 
 
 
-        cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"), approved=True,funded = True, ).order_by('-campaign_id')
+        cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences__contains="All"), approved=True,funded = True, ).order_by('-campaign_id')
 
 
 
@@ -288,7 +288,7 @@ class NoisemakersView(View):
 
 
             preferences = us.preferences
-            cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"),approved=True,funded = True, ).order_by('-campaign_id')
+            cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences__contains="All"),approved=True,funded = True, ).order_by('-campaign_id')
 
 
             chc = Tracker.objects.filter(trackers_ID=user, tracking_ID=dummy ).exists()
@@ -357,7 +357,7 @@ class NoisemakersView(View):
 
 
         preferences = us.preferences
-        cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences="All"),approved=True,funded = True, ).order_by('-campaign_id')
+        cam= Campaigns.objects.filter(Q(preferences__contains=preferences)| Q(preferences__contains="All"),approved=True,funded = True, ).order_by('-campaign_id')
         noaction = 'Yet to carryout the action'
         errorclass5 = 'alert alert-danger'
         variables = {
@@ -406,16 +406,20 @@ class PayoutView(View):
         new_bank = request.POST.get('bank', '')
         new_num = request.POST.get('bank_account', '')
 
+        note = 'Bank account:' + " " + new_num + 'Bank:  ' + " " + new_bank
+
 
         if int(amount) > balance:
             return render(request, 'influencers/payout.html', {'error2' : error2, 'form' : form, 'error_class' : error_class,
                                                                'payment_history' : payment_history, 'usernum':usernum})
         if int(amount) < 1000:
             return render(request, 'influencers/payout.html', {'error3' : error3, 'form' : form, 'error_class3' : error_class3,
-                                                               'payment_history' : payment_history, 'usernum':usernum})
+
+
+                                                             'payment_history' : payment_history, 'usernum':usernum})
 
         if form.is_valid():
-            pay = Payouts(user = username, amount_requested = amount, approved= False, paid = False, note= 'waiting approval', date_requested = datetime)
+            pay = Payouts(user = username, amount_requested = amount, approved= False, paid = False, note= note, date_requested = datetime)
             pay.save()
             us.escrow = balance - int(amount)
             us.bank_name = new_bank

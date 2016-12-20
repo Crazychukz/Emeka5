@@ -63,8 +63,8 @@ class NoisemakerProfile(models.Model):
     decibel = models.FloatField(null=False,verbose_name=('decibel'), default=0.5)
     account_number = models.IntegerField(null=False, default=0)
     account_name = models.CharField(max_length=250, null=True)
-    bank_name = models.CharField(max_length=250, choices=BANKS, null=True)
-    preferences = models.CharField(max_length=250, choices=PREFERENCES, null=True)
+    bank_name = models.CharField(max_length=250, choices=BANKS)
+    preferences = models.CharField(max_length=6500)
 
     class Meta:
         ordering = ["pk"]
@@ -135,7 +135,7 @@ class Campaigns(models.Model):
     approved = models.BooleanField(verbose_name=('approved'),default=False)
     funded = models.BooleanField(verbose_name=('funded'),default=False)
     featured = models.BooleanField(default=False)
-    lookup = models.SlugField(unique=True,default=get_random_string,max_length=13,)
+    lookup = models.SlugField(unique=False,default=get_random_string,max_length=13,)
 
 
 
